@@ -19,6 +19,7 @@ class Subcategory extends JsonResource
             'category_id' => $this->category_id,
             'name' => $this['name_' . app()->getLocale()],
             'image' => $this->image400,
+            'Category'=>new Category($this->Category)
         ];
     }
 }

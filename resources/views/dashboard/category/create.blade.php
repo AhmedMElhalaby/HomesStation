@@ -4,10 +4,10 @@
     <script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/plugins/forms/selects/select2.min.js"></script>
 	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/plugins/forms/styling/uniform.min.js"></script>
     <script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/pages/form_layouts.js"></script>
-	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/core/libraries/jquery_ui/interactions.min.js"></script>    
-	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/pages/form_select2.js"></script>    
-	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/core/app.js"></script>    
-    <!-- /theme JS files -->    
+	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/core/libraries/jquery_ui/interactions.min.js"></script>
+	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/pages/form_select2.js"></script>
+	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/core/app.js"></script>
+    <!-- /theme JS files -->
 @endsection
 @section('content')
 <div class="row">
@@ -18,7 +18,7 @@
             {{ csrf_field() }}
             <div class="panel panel-flat">
                 <div class="panel-heading">
-                    <h5 class="panel-title"> {{ trans('dash.add_new_category') }} </h5>                    
+                    <h5 class="panel-title"> {{ trans('dash.add_new_category') }} </h5>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -43,9 +43,16 @@
                         <label class="col-lg-3 control-label">{{ trans('dash.type') }}</label>
                         <div class="col-lg-9">
                             <select name="type" class="select-border-color border-warning" >
-                                <option value="products"> products - منتجات </option>                                
-                                <option value="services"> services - خدمات </option>                                
+                                <option value="products"> products - منتجات </option>
+                                <option value="services"> services - خدمات </option>
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="is_deliverable" class="col-lg-3 control-label">{{ trans('dash.is_deliverable') }}</label>
+                        <div class="col-lg-9">
+                            <input type="checkbox" id="is_deliverable" name="is_deliverable" class="form-control" placeholder="{{ trans('dash.is_deliverable') }}">
                         </div>
                     </div>
                     <div class="text-right">
@@ -61,7 +68,7 @@
     <div class="col-md-6">
         <div class="panel panel-flat">
             <div class="panel-heading">
-                <h5 class="panel-title"> {{ trans('dash.latest_categories') }} </h5>                    
+                <h5 class="panel-title"> {{ trans('dash.latest_categories') }} </h5>
             </div>
             <div class="panel-body">
                 <table class="table table-bordered table-hover">

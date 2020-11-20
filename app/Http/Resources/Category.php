@@ -20,6 +20,7 @@ class Category extends JsonResource
             'type' => $this->type,
             'ads_count' => $this->BookingAd()->accepted()->count(),
             'image' => $this->image400,
+            'is_deliverable' => $this->is_deliverable,
         ];
     }
 }

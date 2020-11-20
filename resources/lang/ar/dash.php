@@ -8,7 +8,7 @@ return [
     'login' => 'تسجيل الدخول',
     'logout' => 'تسجيل الخروج',
     'forgot_password' => 'نسيت كلمة المرور',
-    
+
     // general
     'home' => 'الصفحة الرئيسية',
     'settings' => 'الإعدادات',
@@ -16,24 +16,25 @@ return [
     'edit_data' => 'تعديل البيانات',
     'delete_data' => 'حذف البيانات',
     'empty' => 'لا يوجد بيانات',
-    'soon' => 'قريبا',    
-    
-    // table columns 
+    'soon' => 'قريبا',
+
+    // table columns
     'created_at' => 'أنشئت في',
     'sent_at' => 'أرسلت في',
     'actions' => 'أفعال',
     'name_ar' => 'الاسم باللغة العربية',
     'name_en' => 'الاسم باللغة الانجليزية',
-    'image' => 'صورة',   
-    
+    'is_deliverable' => 'امكانية التوصيل',
+    'image' => 'صورة',
+
     // validation
     'wrong_password' => 'كلمة المرور القديمة خاطئة ،،، من فضلك اعد المحاولة',
 
     // action messages
-    'added_successfully' => 'تمت اضافه البيانات بنجاح',    
-    'updated_successfully' => 'تم التعديل البيانات بنجاح',    
-    'sent_successfully' => 'تم الإرسال البيانات بنجاح',    
-    'updated_password_successfully' => 'تم تعديل كلمة المرور بنجاح',    
+    'added_successfully' => 'تمت اضافه البيانات بنجاح',
+    'updated_successfully' => 'تم التعديل البيانات بنجاح',
+    'sent_successfully' => 'تم الإرسال البيانات بنجاح',
+    'updated_password_successfully' => 'تم تعديل كلمة المرور بنجاح',
     'deleted_msg_confirm' => 'هل انت متأكد من الحذف ؟',
     'deleted_successfully' => 'تم الحذف بنجاح',
     'try_2_access_not_found_content' => 'محاولة الوصول إلى المحتوى غير موجود',
@@ -48,8 +49,8 @@ return [
     'main' => 'الرئيسية',
     'others' => 'أخرى',
     'my_profile' => 'صفحتي الشخصية',
-    
-    // buttons 
+
+    // buttons
     'add_forword_2_menu' => 'إضافة والعودة إلى القائمة',
     'edit_forword_2_menu' => 'تعديل والعودة إلى القائمة',
     'reset_data' => 'تفريغ البيانات',
@@ -80,7 +81,7 @@ return [
     'free_trial_availability' => 'إتاحة التجربة المجانية',
     'free_trial_period_type' => 'نوع المدة الخاصة بالتجربة المجانية',
     'free_trial_period' => 'مدة التجربة المجانية',
-    
+
     // Category
     'categories' => 'الأقسام الرئيسية',
     'category' => 'القسم الرئيسي',
@@ -122,15 +123,15 @@ return [
     'add_new_subcategory' => 'إضافة قسم فرعي جديد',
     'edit_subcategory' => 'تعديل بيانات القسم الفرعي',
     'ordered_subcategories' => 'أقسام فرعية مرتبة',
-    'latest_subcategories' => 'آخر الاقسام الفرعية المضافة',    
-    
+    'latest_subcategories' => 'آخر الاقسام الفرعية المضافة',
+
     // Subcategory Tag
     'subcategory_tags' => 'تصنيفات الأقسام الفرعية',
     'subcategory_tag' => 'تصنيف القسم الفرعي',
     'add_new_subcategory_tag' => 'إضافة تصنيف قسم فرعي جديد',
     'edit_subcategory_tag' => 'تعديل بيانات تصنيف القسم الفرعي',
     'ordered_subcategory_tags' => 'تصنيفات أقسام فرعية مرتبة',
-    'latest_subcategory_tags' => 'آخر التصنيفات للاقسام الفرعية المضافة',    
+    'latest_subcategory_tags' => 'آخر التصنيفات للاقسام الفرعية المضافة',
 
     // Users
     'add_new_user' => 'إضافة مستخدم جديد',
@@ -139,7 +140,7 @@ return [
     'users' => 'المستخدمين',
     'users_trashed' => 'المستخدمين في المهملات',
     'user' => 'المستخدم',
-    
+
     // Delegates
     'add_new_delegate' => 'إضافة مندوب جديد',
     'edit_delegate' => 'تعديل بيانات المندوب',
@@ -206,7 +207,7 @@ return [
     'verified' => 'حساب متحقق',
     'unverified' => 'حساب غير متحقق',
     'expire_date_subscription' => 'تاريخ إنتهاء الإشتراك',
-    
+
     // Cities
     'add_new_city' => 'اضف مدينة جديدة',
     'cities' => 'المدن',
@@ -217,7 +218,7 @@ return [
     'select_place_on_map' => 'اختر المكان على الخريطة',
     'lat' => 'خط العرض',
     'lng' => 'خط الطول',
-    
+
     // Countries
     'country' => 'الدولة',
     'add_new_country' => 'اضف دولة جديدة',
@@ -315,7 +316,7 @@ return [
         'orders' => 'بلاغات الطلبات',
         'reason' => 'سبب الإبلاغ',
     ],
-    
+
     'transaction' => [
         'transactions' => 'المعاملات',
         'client_name' => 'اسم العميل',
@@ -333,7 +334,7 @@ return [
         'role_name_ar' => 'اسم الصلاحية باللغة العربية',
         'role_name_en' => 'اسم الصلاحية باللغة الإنجليزية',
     ],
-    
+
     'bank_accounts' => [
         'bank_accounts' => 'الحسابات البنكية',
         'bank_account' => 'الحساب البنكي',

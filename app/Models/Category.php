@@ -14,7 +14,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'priority', 'name_ar', 'name_en', 'image', 'type'
+        'priority', 'name_ar', 'name_en', 'image', 'type','is_deliverable'
     ];
 
     protected $appends = ['image200', 'image400', 'image600'];
