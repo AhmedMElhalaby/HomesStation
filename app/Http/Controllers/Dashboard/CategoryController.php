@@ -107,6 +107,6 @@ class CategoryController extends Controller
             }
         }
         $category->forceDelete();
-        return ['status' => 'true', 'message' => trans('dash.deleted_successfully')]; 
+        return ['status' => 'true', 'message' => trans('dash.deleted_successfully')];
     }
 }

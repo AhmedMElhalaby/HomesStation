@@ -27,7 +27,6 @@ class CountryStore extends FormRequest
             'name_ar' => 'required',
             'name_en' => 'required',
             'phonecode' => 'required',
-            'is_deliverable' => 'required',
         ];
     }
 }

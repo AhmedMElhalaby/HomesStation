@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label for="is_deliverable" class="col-lg-3 control-label">{{ trans('dash.is_deliverable') }}</label>
                         <div class="col-lg-9">
-                            <input type="checkbox" id="is_deliverable" name="is_deliverable" @if($category->is_deliverable) checked @endif class="form-control" placeholder="{{ trans('dash.is_deliverable') }}">
+                            <input type="checkbox" id="is_deliverable" value="1" name="is_deliverable" @if($category->is_deliverable) checked @endif class="form-control" placeholder="{{ trans('dash.is_deliverable') }}">
                         </div>
                     </div>
                     <div class="text-right">
