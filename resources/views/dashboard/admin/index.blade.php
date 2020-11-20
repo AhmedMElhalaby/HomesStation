@@ -1,0 +1,106 @@
+@extends('dashboard.layout')
+
+@section('script')
+    <script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/core/app.js"></script>
+	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/pages/datatables_advanced.js"></script>
+	<script type="text/javascript" src="{{ asset('resources/assets/dashboard/material') }}/assets/js/plugins/ui/ripple.min.js"></script>
+@endsection
+
+@section('content')
+
+
+<div class="panel panel-flat tb_padd">
+    <div class="panel-heading">
+        <h5 class="panel-title"> {{ trans('dash.admins') }} </h5>        
+    </div>
+
+    <a class="btn btn-primary" href="{{ route('admin.create') }}"> {{ trans('dash.add_new_admin') }} </a>
+    <table class="table table-condensed table-hover datatable-highlight">
+        <thead>
+            <tr>
+                <th class="text-center"> {{ trans('dash.image') }} </th>
+                <th class="text-center"> {{ trans('dash.username') }} </th>
+                <th class="text-center"> {{ trans('dash.mobile') }} </th>
+                <th class="text-center"> {{ trans('dash.status_account') }} </th>
+                <th class="text-center"> {{ trans('dash.city') }} </th>
+                <th class="text-center"> {{ trans('dash.created_at') }} </th>
+                <th class="text-center"> {{ trans('dash.actions') }} </th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($admins as $admin)
+            <tr id="row_{{ $admin->id }}">
+                <td class="text-center"> <img width="100px" class="img-thumbnail" src="{{ $admin->image400 }}" /> </td>
+                <td class="text-center"> {{ $admin->username }} </td>
+                <td class="text-center"> {{ $admin->mobile }} </td>
+                <td class="text-center">
+                    @if($admin->banned == '1') 
+                        <span class="label bg-warning-400">{{ trans('dash.banned_account') }}</span> 
+                    @elseif($admin->active == 'deactive')
+                        <span class="label bg-danger-400">{{ trans('dash.deactive') }}</span> 
+                    @else
+                        <span class="label bg-primary-400">{{ trans('dash.active') }}</span> 
+                    @endif
+                </td>
+                <td class="text-center"> {{ $admin->City == null ? trans('dash.empty') : $admin->City['name_'. app()->getLocale()] }} </td>
+                <td class="text-center"> {{ $admin->created_at->diffforhumans() }} </td>
+                <td class="text-center">
+                    {{--  <a href="{{ route('admin.show', $admin->id) }}" class="btn btn-success" data-popup="tooltip" title="{{ trans('dash.show_data') }}"><i class="fa fa-tv"></i></a>  --}}
+                    <a href="{{ route('admin.edit',['id' => $admin->id ]) }}" data-popup="tooltip" title="{{ trans('dash.edit_data') }}"  class="btn btn-primary"> <i class="icon-pencil3"></i> </a>
+                    {{--  <a data-popup="tooltip" title="archive" class="btn btn-info" > <i class="fa fa-archive"></i> </a>  --}}
+                    <a data-popup="tooltip" title="{{ trans('dash.delete_data') }}" onclick="sweet_delete( '{{ route('admin.destroy', $admin->id) }}', {{ $admin->id }} )" class="btn btn-danger" > <i class="icon-bin2"></i> </a>
+                </td>
+            </tr>
+            @empty
+            @endforelse
+            
+        </tbody>
+    </table>
+    <br>
+</div>
+
+<script>
+    function sweet_delete(url, id)
+    {
+        $( "#row_"+ id ).css('background-color','#000000').css('color','white');
+        swal({
+            title: "{{ trans('dash.deleted_msg_confirm') }}",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: {_method: 'delete', _token : '{{ csrf_token() }}' },
+                    success: function (data) {
+                        console.log(data);
+                        if(data['status'] == 'true'){
+                            swal({
+                                title: "{{ trans('alert') }}",
+                                text: data['message'],
+                                icon: "success",
+                            });
+                            $( "#row_" + id ).hide(1000);
+                        }else{
+                            swal({
+                                title: "{{ trans('alert') }}",
+                                text: data['message'],
+                                icon: "warning",
+                            });
+                            $("#row_" + id ).removeAttr('style');
+                        }
+                    }
+                });                               
+            }else{
+                $( "#row_"+id ).removeAttr('style');
+            }
+        });
+    }
+</script>
+
+@endsection

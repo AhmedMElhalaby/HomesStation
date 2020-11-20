@@ -1,0 +1,29 @@
+/* fonts */
+@font-face {
+  font-family: 'JF-Flat-light';
+  src: url("JF-Flat-light.eot");
+  src: url("JF-Flat-light.eot?#iefix") format("embedded-opentype"), url("JF-Flat-light.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'JFFlat-Light';
+  src: url("../fonts/JFFlat-Light.svg#JFFlat-Light") format("svg"), url("../fonts/JFFlat-Light.ttf") format("truetype"), url("../fonts/JFFlat-Light.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'JFFlat-Regular';
+  src: url("../fonts/JFFlat-Regular.eot");
+  src: url("../fonts/JFFlat-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/JFFlat-Regular.svg#JFFlat-Regular") format("svg"), url("../fonts/JFFlat-Regular.ttf") format("truetype"), url("../fonts/JFFlat-Regular.woff") format("woff"), url("../fonts/JFFlat-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'JF-Flat-medium';
+  src: url("../fonts/JF-Flat-medium.eot");
+  src: url("../fonts/JF-Flat-medium.eot?#iefix") format("embedded-opentype"), url("../fonts/JF-Flat-medium.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'JFFlat-Medium';
+  src: url("../fonts/JFFlat-Medium.svg#JFFlat-Medium") format("svg"), url("../fonts/JFFlat-Medium.ttf") format("truetype"), url("../fonts/JFFlat-Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }

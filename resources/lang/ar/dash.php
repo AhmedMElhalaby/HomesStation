@@ -1,0 +1,390 @@
+<?php
+
+return [
+
+    'home_station_dashboard' => 'لوحة تحكم هومز استيشن',
+
+    // auth
+    'login' => 'تسجيل الدخول',
+    'logout' => 'تسجيل الخروج',
+    'forgot_password' => 'نسيت كلمة المرور',
+    
+    // general
+    'home' => 'الصفحة الرئيسية',
+    'settings' => 'الإعدادات',
+    'show_data' => 'عرض البيانات',
+    'edit_data' => 'تعديل البيانات',
+    'delete_data' => 'حذف البيانات',
+    'empty' => 'لا يوجد بيانات',
+    'soon' => 'قريبا',    
+    
+    // table columns 
+    'created_at' => 'أنشئت في',
+    'sent_at' => 'أرسلت في',
+    'actions' => 'أفعال',
+    'name_ar' => 'الاسم باللغة العربية',
+    'name_en' => 'الاسم باللغة الانجليزية',
+    'image' => 'صورة',   
+    
+    // validation
+    'wrong_password' => 'كلمة المرور القديمة خاطئة ،،، من فضلك اعد المحاولة',
+
+    // action messages
+    'added_successfully' => 'تمت اضافه البيانات بنجاح',    
+    'updated_successfully' => 'تم التعديل البيانات بنجاح',    
+    'sent_successfully' => 'تم الإرسال البيانات بنجاح',    
+    'updated_password_successfully' => 'تم تعديل كلمة المرور بنجاح',    
+    'deleted_msg_confirm' => 'هل انت متأكد من الحذف ؟',
+    'deleted_successfully' => 'تم الحذف بنجاح',
+    'try_2_access_not_found_content' => 'محاولة الوصول إلى المحتوى غير موجود',
+    'transfer_declined' => 'تم رفض التحويل',
+    'transfer_was_successful' => 'تم قبول التحويل',
+    'logged_out_successfully' => 'تم تسجيل الخروج بنجاح',
+    'you_are_not_allowed_to_edit_or_deleted_data_for_this_item' => 'غير مسموح لك بتعديل أو حذف بيانات هذا العنصر',
+
+    // SideBar & NavBar
+    'my_account' => 'حسابي',
+    'my_profile' => 'الملف الشخصي',
+    'main' => 'الرئيسية',
+    'others' => 'أخرى',
+    'my_profile' => 'صفحتي الشخصية',
+    
+    // buttons 
+    'add_forword_2_menu' => 'إضافة والعودة إلى القائمة',
+    'edit_forword_2_menu' => 'تعديل والعودة إلى القائمة',
+    'reset_data' => 'تفريغ البيانات',
+    'back_to_menu' => 'العودة إلى القائمة',
+    'update_data' => 'تحديث البيانات',
+    'update_password' => 'تحديث كلمة المرور',
+    'send' => 'إرسال',
+
+    // settings
+    'app_lang' => 'لغة التطبيق الإفتراضية',
+    'about_and_terms' => 'عن التطبيق - الشروط والأحكام',
+    'contact_general_data' => 'بيانات عامة والتواصل',
+    'application_settings' => 'إعدادات التطبيق الخاصة',
+    'facebook_url' => 'رابط صفحة فيس بوك',
+    'twitter_url' => 'رابط صفحة تويتر',
+    'instagram_url' => 'رابط صفحة انستغرام',
+    'youtube_url' => 'رابط صفحة يوتيوب',
+    'whatsapp_phone' => 'رقم الجوال المرتبط بالواتس',
+    'about_ar' => 'عن التطبيق باللغة العربية',
+    'about_en' => 'عن التطبيق باللغة الإنجليزية',
+    'policy_terms_ar' => 'الشروط والأحكام باللغة العربية',
+    'policy_terms_en' => 'الشروط والأحكام باللغة الإنجليزية',
+    'num_of_search_km_for_provider' => 'عدد الكيلومترات المراد البحث عن أسر فيها',
+    'app_precentage_from_provider' => 'نسبة التطبيق من أرباح الأسرة',
+    'number_of_ads_in_day' => 'عدد الإعلانات المتاحة في اليوم الواحد',
+    'price_of_delegate_subscription' => 'قيمة إشتراك المندوب في التطبيق',
+    'price_of_publishing_an_ad' => 'قيمة نشر إعلان في التطبيق',
+    'free_trial_availability' => 'إتاحة التجربة المجانية',
+    'free_trial_period_type' => 'نوع المدة الخاصة بالتجربة المجانية',
+    'free_trial_period' => 'مدة التجربة المجانية',
+    
+    // Category
+    'categories' => 'الأقسام الرئيسية',
+    'category' => 'القسم الرئيسي',
+    'add_new_category' => 'إضافة قسم رئيسي جديد',
+    'edit_category' => 'تعديل بيانات القسم الرئيسي',
+    'ordered_categories' => 'أقسام رئيسية مرتبة',
+    'latest_categories' => 'آخر الاقسام الرئيسية المضافة',
+    'type' => 'النوع',
+
+    'subscription' => [
+        'subscription' => 'الإشتراك',
+        'subscriptions' => 'الإشتراكات',
+        'all_subscriptions' => 'جميع الإشتراكات',
+        'latest_subscriptions' => 'آخر الإشتراكات المسجلة',
+        'add_new_subscription' => 'إضافة إشتراك جديد',
+        'edit_subscription_data' => 'تعديل بيانات الإشتراك',
+        'subscription_data' => 'بيانات الإشتراك',
+        'user_type' => 'نوع المستخدم',
+        'name_ar' => 'اسم الاشتراك باللغة العربية',
+        'name_en' => 'اسم الاشتراك باللغة الإنجليزية',
+        'period' => 'فترة الإشتراك',
+        'period_type' => 'نوع فترة الإشتراك',
+        'price' => 'سعر الإشتراك',
+        'image' => 'صورة الإشتراك',
+        'description_ar' => 'وصف الإشتراك باللغة العربية',
+        'description_en' => 'وصف الإشتراك باللغة الإنجليزية',
+        'period_types' => [
+            'hours' => 'الساعات - hours',
+            'days' => 'الأيام - days',
+            'weeks' => 'الأسابيع - weeks',
+            'months' => 'الشهور - months',
+            'years' => 'السنين - years',
+        ],
+    ],
+
+    // Subcategory
+    'subcategories' => 'الأقسام الفرعية',
+    'subcategory' => 'القسم الفرعي',
+    'add_new_subcategory' => 'إضافة قسم فرعي جديد',
+    'edit_subcategory' => 'تعديل بيانات القسم الفرعي',
+    'ordered_subcategories' => 'أقسام فرعية مرتبة',
+    'latest_subcategories' => 'آخر الاقسام الفرعية المضافة',    
+    
+    // Subcategory Tag
+    'subcategory_tags' => 'تصنيفات الأقسام الفرعية',
+    'subcategory_tag' => 'تصنيف القسم الفرعي',
+    'add_new_subcategory_tag' => 'إضافة تصنيف قسم فرعي جديد',
+    'edit_subcategory_tag' => 'تعديل بيانات تصنيف القسم الفرعي',
+    'ordered_subcategory_tags' => 'تصنيفات أقسام فرعية مرتبة',
+    'latest_subcategory_tags' => 'آخر التصنيفات للاقسام الفرعية المضافة',    
+
+    // Users
+    'add_new_user' => 'إضافة مستخدم جديد',
+    'edit_user' => 'تعديل بيانات المستخدم',
+    'last_users' => 'آخر المستخدمين المسجلين',
+    'users' => 'المستخدمين',
+    'users_trashed' => 'المستخدمين في المهملات',
+    'user' => 'المستخدم',
+    
+    // Delegates
+    'add_new_delegate' => 'إضافة مندوب جديد',
+    'edit_delegate' => 'تعديل بيانات المندوب',
+    'last_delegates' => 'آخر المندوبين المسجلين',
+    'delegates' => 'المندوبين',
+    'delegate_data' => 'بيانات المندوب',
+    'delegates_trashed' => 'المندوبين في المهملات',
+    'delegate' => 'المندوب',
+    'delegate_orders' => 'طلبات المندوب',
+
+    // Profile
+    'profile_information' => 'البيانات الشخصية',
+    'change_password' => 'تغيير كلمة المرور',
+    'roles' => 'الصلاحيات',
+    'send_notification' => 'إرسال إشعار',
+
+    // user form data
+    'username' => 'اسم المستخدم',
+    'fullname' => 'الإسم بالكامل',
+    'account_type' => 'نوع الحساب',
+    'mobile' => 'رقم الجوال',
+    'current_password' => 'كلمة المرور الحالية',
+    'new_password' => 'كلمة المرور الجديدة',
+    'confirm_password' => 'تأكيد كلمة المرور',
+    'password' => 'كلمة المرور',
+    'email' => 'البريد الإلكتروني',
+    'profile_image' => 'الصورة الشخصية',
+    'status_account' => 'حالة الحساب',
+    'ban_reason' => 'سبب الحظر',
+    'active' => 'مفعل',
+    'deactive' => 'غير مفعل',
+    'banned_account' => 'محظور',
+    'not_banned_account' => 'غير محظور',
+    'main_info' => 'البيانات الرئيسية',
+    'identity_number' => 'رقم السجل المدني',
+    'license_image' => 'صورة رخصة القيادة',
+    'user_orders' => 'طلبات العميل',
+
+    // Providers
+    'add_new_provider' => 'إضافة مقدم خدمة جديد',
+    'edit_provider' => 'تعديل بيانات مقدم الخدمة',
+    'last_providers' => 'آخر مقدمي الخدمات المسجلين',
+    'providers' => 'مقدمي الخدمات',
+    'providers_trashed' => 'مقدمي الخدمات في المهملات',
+    'provider' => 'مقدم الخدمة',
+    'provider_data' => 'بيانات مقدم الخدمة',
+    'provider_services' => 'خدمات مقدم الخدمة',
+    'provider_orders' => 'طلبات مقدم الخدمة',
+    'store_name' => 'اسم المتجر',
+    'availability' => 'الإتاحية',
+    'delivery_price' => 'سعر التوصيل',
+    'delivery_balance' => 'رصيد التوصيل',
+    'balance' => 'رصيد المتجر من الطلبات',
+    'debt_provider' => 'القيمة المدينة بها الأسرة للتطبيق',
+    'commercial_register_number' => 'رقم السجل التجاري',
+    'commercial_register_image' => 'صورة السجل التجاري',
+    'minimum_charge' => 'الحد الأدنى للطلب',
+    'store_data' => 'بيانات المتجر',
+    'opening_time' => 'ميعاد الفتح',
+    'closing_time' => 'ميعاد الإغلاق',
+    'rate_avg' => 'معدل التقييم',
+    'views_count' => 'عدد الزوار',
+    'is_verified' => 'هل الحساب متحقق ؟',
+    'verified' => 'حساب متحقق',
+    'unverified' => 'حساب غير متحقق',
+    'expire_date_subscription' => 'تاريخ إنتهاء الإشتراك',
+    
+    // Cities
+    'add_new_city' => 'اضف مدينة جديدة',
+    'cities' => 'المدن',
+    'city' => 'المدينة',
+    'edit_city' => 'تعديل المدينة',
+    'latest_cities' => 'احدث المدن',
+    'zip_code' => 'الرمز البريدي',
+    'select_place_on_map' => 'اختر المكان على الخريطة',
+    'lat' => 'خط العرض',
+    'lng' => 'خط الطول',
+    
+    // Countries
+    'country' => 'الدولة',
+    'add_new_country' => 'اضف دولة جديدة',
+    'edit_country' => 'تعديل الدولة',
+    'countries' => 'الدول',
+    'choose_country' => 'يجب عليك اختيار الدولة',
+    'latest_countries' => 'احدث الدول',
+    'nationality_name_ar' => 'اسم الجنسية بالعربية',
+    'nationality_name_en' => 'اسم الجنسية بالانجليزية',
+    'phonecode' => 'مفتاح الدولة',
+
+    // Nationalities
+    'nationality' => 'الجنسية',
+    'nationalities' => 'الجنسيات',
+    'add_new_nationality' => 'اضف جنسية جديدة',
+    'edit_nationality' => 'تعديل الجنسية',
+    'choose_nationality' => 'يجب عليك اختيار الجنسية',
+    'latest_nationalities' => 'احدث الجنسيات',
+    'nationality_name_ar' => 'اسم الجنسية بالعربية',
+    'nationality_name_en' => 'اسم الجنسية بالانجليزية',
+
+    // Services
+    'service' => 'الخدمة',
+    'add_new_service' => 'أضف خدمة جديدة',
+    'edit_service' => 'تعديل الخدمة',
+    'services' => 'الخدمات',
+    'latest_services' => 'أحدث الخدمات',
+    'name' => 'الإسم',
+    'price' => 'السعر',
+    'offer' => 'عرض',
+    'offer_price' => 'سعر العرض',
+    'has_offer' => 'لديه عرض',
+    'has_not_offer' => 'لا يحتوي على عرض',
+    'latest_services' => 'أحدث الخدمات',
+    'description' => 'الوصف',
+    'images' => 'الصور',
+
+    // Orders
+    'order_number' => 'رقم الطلب',
+    'orders' => 'الطلبات',
+    'finished_orders' => 'الطلبات المنتهية',
+    'current_orders' => 'الطلبات الحالية',
+    'client_data' => 'بيانات العميل',
+    'client_name' => 'اسم العميل',
+    'provider_name' => 'اسم الأسرة',
+    'order_price' => 'سعر الطلب',
+    'delegate_price' => 'سعر التوصيل',
+    'order_details' => 'تفاصيل الطلب',
+    'order_status' => 'حالة الطلب',
+    'empty_cart'=>'السلة فارغة',
+
+    // retrieve orders
+    'retrieve_orders' => 'استرجاع الطلبات',
+    'retrieve_order_requests' => 'الطلبات المنتظرة',
+    'retrieve_order_retrieved' => 'الطلبات المسترجعة',
+
+    // administration
+    'administration' => ' الادارة ',
+    'administration_groups' => ' مجموعات الادارة ',
+    'add_new_administration_groups' => ' اضف مجموعه ادارية جديدة ',
+    'create' => ' اضافة ',
+    'trash' => ' سلة المهملات ',
+    'edit' => ' تعديل ',
+    'delete' => 'حذف',
+    'list' => 'القائمة',
+
+    // Admins
+    'add_new_admin' => 'إضافة مشرف جديد',
+    'edit_admin' => 'تعديل بيانات المشرف',
+    'last_admins' => 'آخر المشرفين المسجلين',
+    'admins' => 'المشرفين',
+    'admins_trashed' => 'المشرفين في المهملات',
+    'admin' => 'المشرف',
+
+    'statistics' => [
+        'month' => 'الشهر',
+        'week' => 'الأسبوع',
+        'day' => 'اليوم',
+        'statistics' => 'الإحصائيات',
+        'sr' => 'ريال سعودي',
+        'from' => 'من',
+        'to' => 'إلى',
+        'total_orders_price' => 'مجموع سعر الطلبات',
+        'real_weakly_report' => 'تقرير أسبوعي',
+        'real_yearly_report' => 'تقرير سنوي',
+        'totaly_profits_this_year_for_provider' => 'مجموع ارباح المتاجر في السنة',
+        'totaly_profits_this_year_for_delivery_price' => 'مجموع ارباح المندوبين في السنة',
+        'totaly_profits_this_year_for_app_precentage' => 'مجموع ارباح التطبيق في السنة',
+    ],
+
+    'user_reports' => [
+        'user_reports' => 'بلاغات العملاء',
+        'providers' => 'بلاغات عن مقدمي الخدمات',
+        'services' => 'بلاغات الخدمات',
+        'orders' => 'بلاغات الطلبات',
+        'reason' => 'سبب الإبلاغ',
+    ],
+    
+    'transaction' => [
+        'transactions' => 'المعاملات',
+        'client_name' => 'اسم العميل',
+        'order_number' => 'رقم الطلب',
+        'transaction_id' => 'رقم المعاملة',
+        'amount' => 'المبلغ',
+    ],
+
+    'permissions' => [
+        'permissions' => 'الصلاحيات',
+        'permission' => 'الصلاحية',
+        'add_new_permission' => 'اضف صلاحية جديدة',
+        'last_permissions' => 'آخر الصلاحيات المسجلة',
+        'edit_permission' => 'تعديل الصلاحية',
+        'role_name_ar' => 'اسم الصلاحية باللغة العربية',
+        'role_name_en' => 'اسم الصلاحية باللغة الإنجليزية',
+    ],
+    
+    'bank_accounts' => [
+        'bank_accounts' => 'الحسابات البنكية',
+        'bank_account' => 'الحساب البنكي',
+        'add_new_bank_account' => 'اضف حساب بنكي جديد',
+        'edit_bank_account' => 'تعديل الحساب البنكي',
+        'latest_bank_accounts' => 'احدث الحسابات البنكية',
+        'bank_name' => 'اسم البنك',
+        'owner_account' => 'صاحب الحساب',
+        'account_number' => 'رقم الحساب',
+        'logo_bank' => 'شعار البنك',
+    ],
+
+    'ads' => [
+        'ads' => 'الإعلانات',
+        'ad' => 'الإعلان',
+        'add_new_ad' => 'اضف إعلان جديد',
+        'edit_ad' => 'تعديل بيانات الإعلان',
+        'waiting' => 'الإعلان المنتظرة',
+        'accepted' => 'الإعلان الموافق عليها',
+        'unaccepted' => 'الإعلان الغير موافق عليها',
+        'date_day' => 'تاريخ الإعلان',
+        'status' => 'حالة الإعلان',
+        'image' => 'صورة الإعلان',
+        'desc' => 'وصف الإعلان',
+    ],
+
+    'bank_transfers' => [
+        'bank_transfers' => 'التحويلات البنكية',
+        'bank_transfers_for_ads' => 'الاعلانات',
+        'providers_subscriptions' => 'إشتراك مقدمي الخدمات',
+        'bank_transfers_for_delegate' => 'إشتراك المناديب',
+        'amount_of_transfer' => 'المبلغ المحول',
+    ],
+
+    // contacts
+    'contacts' => [
+        'contact_us' => 'رسائل التواصل',
+        'name' => 'الاسم',
+        'mobile' => 'رقم الجوال',
+        'title' => 'العنوان',
+        'is_seen' => 'شوهدت ؟',
+        'seen' => 'شوهدت من قبل',
+        'unseen' => 'لم تشاهد من قبل',
+        'message' => 'نص الرسالة',
+    ],
+
+    // error pages
+    '401' => " لا تملك الصلاحية للوصول الى الصفحة الحالية ",
+    '404' => " هذه الصفحة غير موجوده ",
+
+    'copy_write' => 'جميع الحقوق محفوظه لتطبيق هومز استيشن © ' . date('Y') . '.',
+    'developed_by' => 'تم برمجته بواسطة : م.عبدالله عرابي',
+
+];

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="author" content="ahmed essam">
+  <meta name="description" content="description content">
+  <meta name="keywords" content="content">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Fav icon-->
+  <link rel="shortcut icon" href="{{ asset('resources/assets/site') }}/assets/images/logo.png">
+
+  <!-- style CSS-->
+  <link rel="stylesheet" href="{{ asset('resources/assets/site') }}/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ asset('resources/assets/site') }}/assets/css/bootstrap.css">
+  <link rel="stylesheet" href="{{ asset('resources/assets/site') }}/assets/css/animate.min.css">
+  <link rel="stylesheet" href="{{ asset('resources/assets/site') }}/assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="{{ asset('resources/assets/site') }}/assets/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="{{ asset('resources/assets/site') }}/assets/css/validation.css">
+  <link rel="stylesheet" href="{{ asset('resources/assets/site') }}/assets/css/style.css">
+  <link rel="stylesheet" href="{{ asset('resources/assets/site') }}/assets/css/rtl.css">
+  <link rel="stylesheet" href="{{ asset('resources/assets/site') }}/assets/css/responsive.css">
+
+  <title> Homes Station </title>
+</head>
+
+<body class="home-style three rtl" data-spy="scroll" data-target=".navbar" data-offset="80">
+
+  <div class="social-picker">
+    <a href="#" class="handle">
+      <i class="fa fa-rss"></i>
+    </a>
+    <div class="sec-position">
+      <div class="settings-header">
+        <h3>تواصل معنا</h3>
+      </div>
+      <div class="section">
+        <div class="colors o-auto">
+          <a href="tel:966504156617+">966504156617+
+            <i class="fa fa-phone"></i>
+          </a>
+          <br>
+          <a href="mailto:CC@homesstation.com">CC@homesstation.com
+            <i class="fa fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preloader-->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+  <!-- Preloader end-->
+
+  <!-- Nav Start-->
+  <nav class="navbar navbar-expand-lg navbar-light theme-nav fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{{ route('website.home') }}">
+        <img src="{{ asset('resources/assets/site') }}/assets/images/logo.png" alt="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse default-nav" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" id="mymenu">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">الرئيسية</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">من نحن</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#feature">المميزات</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#screenshot">الشاشات</a>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('website.settings.privacy') }}">الخصوصية</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('website.settings.terms') }}">اتفاقية الاستخدام</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#download">تحميل</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Nav end-->
+
+  <!-- Home Section start-->
+  <section class="home home-three vertical-scrolling" id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-sm-12">
+          <div class="home-contain">
+            <div class="text-white">
+              <div class="contain">
+                <h1 class="text-white"> هومزستيشن </h1>
+                <p class="slide-cap-desc">
+                  هومزستيشن هو أحد التطبيقات الأولى التي تقدم خدمات لجميع أنواع الأسر المنتجة. هومزستيشن عبارة عن منصة تسوق سهلة التصفح وآمنة
+                  الاستخدام للناس لاكتشاف اسر المنتجة المتواجدة في نفس المدينة وربط العملاء للتسوق والتصفح بمنتجاتهم المفضلة
+                  عبر التطبيق.
+                </p>
+                <div class="down-img">
+                  <a href="#">
+                    <img class="store" src="{{ asset('resources/assets/site') }}/assets/images/appstore.png" alt="appstore">
+                  </a>
+                  <a href="#">
+                    <img class="ml-10 store" src="{{ asset('resources/assets/site') }}/assets/images/play-store.png" alt="play-store">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="home-right">
+            <img class="img-fluid" data-tilt="" data-tilt-perspective="110" data-tilt-speed="400" data-tilt-max="1.2" src="{{ asset('resources/assets/site') }}/assets/images/home3/home-3-img.png"
+              alt="slider-caption">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Home Section End-->
+
+  <!-- About Start-->
+  <section class="about" id="about">
+    <div class="about-decor">
+      <div class="about-circle1">
+        <img src="{{ asset('resources/assets/site') }}/assets/images/team1.png" alt="team1">
+      </div>
+      <div class="about-circle2">
+        <img src="{{ asset('resources/assets/site') }}/assets/images/main-banner1.png" alt="banner1">
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="about-contain">
+            <div>
+              <h2 class="title">حول هومزستيشن</h2>
+              <p class="caption-about">
+                  <p>نحن مؤسسة محطة البيوت التجارية</p>
+                  <p>رقم السجل 1010500169 </p>
+                  <p>عنوانه ٣٩٤٦، الشيخ عبدالله المخضوب النفل ،٧٧٦٧ وتطبيق</p>
+                هومزستيشن هو أحد التطبيقات الأولى التي تقدم خدمات لجميع أنواع الأسر المنتجة. هومزستيشن عبارة عن منصة تسوق سهلة التصفح وآمنة
+                الاستخدام للناس لاكتشاف اسر المنتجة المتواجدة في نفس المدينة وربط العملاء للتسوق والتصفح بمنتجاتهم المفضلة
+                عبر التطبيق.
+              </p>
+              <div class="row sm-mb">
+                <div class="col-md-6">
+                  <ul class="about-style">
+                    <li class="abt-hover">
+                      <div class="about-icon">
+                        <div class="icon-hover">
+                          <img src="{{ asset('resources/assets/site') }}/assets/images/icon1.png" alt="easy-to-customized">
+                        </div>
+                      </div>
+                      <div class="about-text">
+                        <h3> سهولة التخصيص </h3>
+                      </div>
+                    </li>
+                    <li class="abt-hover">
+                      <div class="about-icon">
+                        <div class="icon-hover">
+                          <img src="{{ asset('resources/assets/site') }}/assets/images/icon3.png" alt="easy-to-use">
+                        </div>
+                      </div>
+                      <div class="about-text">
+                        <h3> سهل الاستخدام </h3>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="about-style">
+                    <li class="abt-hover">
+                      <div class="about-icon">
+                        <div class="icon-hover">
+                          <img src="{{ asset('resources/assets/site') }}/assets/images/icon2.png" alt="Awasome-Design">
+                        </div>
+                      </div>
+                      <div class="about-text">
+                        <h3> تصميم جميل </h3>
+                      </div>
+                    </li>
+                    <li class="abt-hover">
+                      <div class="about-icon">
+                        <div class="icon-hover">
+                          <img src="{{ asset('resources/assets/site') }}/assets/images/icon4.png" alt="SEO-Friendly">
+                        </div>
+                      </div>
+                      <div class="about-text">
+                        <h3> كبار المسئولين الاقتصاديين ودية </h3>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 d-medium-none">
+          <div class="about-right">
+            <div class="about-phone">
+              <img class="img-fluid" src="{{ asset('resources/assets/site') }}/assets/images/aboutus.png" alt="aboutus">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- About End-->
+
+  <!-- Feature Section start-->
+  <section class="feature" id="feature">
+    <div class="feature-decor">
+      <div class="feature-circle1">
+        <img src="{{ asset('resources/assets/site') }}/assets/images/feature2.png" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="feature-phone">
+          <img class="img-fluid" src="{{ asset('resources/assets/site') }}/assets/images/rtl/222.png" alt="">
+        </div>
+        <div class="set-margin col-lg-8">
+          <div class="row">
+            <div class="col-sm-12 mrgn-md-top">
+              <h2 class="title">ميزات
+                <span> هومزستيشن </span>
+              </h2>
+            </div>
+            <div class="col-12 col-md-6">
+              <ul class="feature-style">
+                <li>
+                  <div class="feature-icon">
+                    <img src="{{ asset('resources/assets/site') }}/assets/images/icon/1.png" alt="icon">
+                  </div>
+                  <div class="feature-subtitle">
+                    <h3> سهولة الاستخدام </h3>
+                  </div>
+                  <div>
+                    <p>سهولة التصفح والتسوق عبر المنتجات .</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="feature-icon">
+                    <img src="{{ asset('resources/assets/site') }}/assets/images/icon/3.png" alt="icon">
+                  </div>
+                  <div class="feature-subtitle">
+                    <h3> الأداء العالي </h3>
+                  </div>
+                  <div>
+                    <p> امكانية التعليق والتقييم للخدمات والمنتجات. </p>
+                  </div>
+                </li>
+                <li>
+                  <div class="feature-icon">
+                    <img src="{{ asset('resources/assets/site') }}/assets/images/icon/5.png" alt="icon">
+                  </div>
+                  <div class="feature-subtitle">
+                    <h3> ميزات غير محدودة </h3>
+                  </div>
+                  <div>
+                    <p> امكانية جدولة الخدمات والطلبات. </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-6 sm-m-top">
+              <ul class="feature-style">
+                <li>
+                  <div class="feature-icon">
+                    <img src="{{ asset('resources/assets/site') }}/assets/images/icon/2.png" alt="icon">
+                  </div>
+                  <div class="feature-subtitle">
+                    <h3> آمن بنسبة 100% </h3>
+                  </div>
+                  <div>
+                    <p> امكانية جدولة الخدمات والطلبات. </p>
+                  </div>
+                </li>
+                <li>
+                  <div class="feature-icon">
+                    <img src="{{ asset('resources/assets/site') }}/assets/images/icon/4.png" alt="icon">
+                  </div>
+                  <div class="feature-subtitle">
+                    <h3>خدمة على مدار الساعة </h3>
+                  </div>
+                  <div>
+                    <p> دعم متميز للعملاء 24/7 . </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Feature Section End-->
+
+  <!-- Screenshot Section SStart-->
+  <section class="screenshot padding-top-bottom" id="screenshot">
+    <div class="screenshot-decor">
+      <div class="screenshot-circle1">
+        <img src="{{ asset('resources/assets/site') }}/assets/images/feature-circle-two.png" alt="feature-circle-two">
+      </div>
+      <div class="screenshot-circle2">
+        <img src="{{ asset('resources/assets/site') }}/assets/images/feature-circle.png" alt="feature-circle">
+      </div>
+      <div class="screenshot-circle3">
+        <img src="{{ asset('resources/assets/site') }}/assets/images/main-banner1.png" alt="feature-circle-three">
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="screenshot-contain">
+            <img class="mobile-light-left" src="{{ asset('resources/assets/site') }}/assets/images/light.png" alt="light">
+            <img class="mob-mocup img-fluid" src="{{ asset('resources/assets/site') }}/assets/images/screenshot-mob.png" alt="screenshot-mob">
+            <img class="mobile-light-right" src="{{ asset('resources/assets/site') }}/assets/images/light-right.png" alt="light-right">
+            <div class="screenshot-carousel-rtl owl-carousel owl-theme">
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/1.png" alt="app">
+              </div>
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/2.png" alt="app">
+              </div>
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/4.png" alt="app">
+              </div>
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/5.png" alt="app">
+              </div>
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/6.png" alt="app">
+              </div>
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/7.png" alt="app">
+              </div>
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/8.png" alt="app">
+              </div>
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/9.png" alt="app">
+              </div>
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/10.png" alt="app">
+              </div>
+              <div class="screenshot-item">
+                <img src="{{ asset('resources/assets/site') }}/assets/images/app/11.png" alt="app">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Screenshot Section End-->
+
+
+  <!-- download section -->
+  <section class="download" id="download">
+    <div class="container">
+      <h2 class="title">حمل تطبيق هومزستيشن</h2>
+      <p>يمكنك الان تحميل هوز ستيشن من المتاجر الاتية</p>
+      <div class="down-img">
+        <a href="#">
+          <img class="store" src="{{ asset('resources/assets/site') }}/assets/images/appstore.png" alt="appstore">
+        </a>
+        <a href="#">
+          <img class="store" src="{{ asset('resources/assets/site') }}/assets/images/play-store.png" alt="play-store">
+        </a>
+      </div>
+      <div>
+        <img src="{{ asset('resources/assets/site') }}/assets/images/aboutus.png" alt="btm-img">
+      </div>
+    </div>
+  </section>
+  <!-- download section End -->
+
+  <!-- Tap on Top-->
+  <div class="tap-top">
+    <div>
+      <i class="fa fa-angle-double-up"></i>
+    </div>
+  </div>
+  <!-- Tap on Ends-->
+
+  <!-- Footer Section start-->
+  <div class="copyright-section index-footer">
+    <p>جميع الحقوق محفوظة لسنه 2019</p>
+  </div>
+  <!-- Footer Section End-->
+
+  <!-- js files-->
+  <script src="{{ asset('resources/assets/site') }}/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="{{ asset('resources/assets/site') }}/assets/js/popper.min.js"></script>
+  <script src="{{ asset('resources/assets/site') }}/assets/js/bootstrap.min.js"></script>
+  <script src="{{ asset('resources/assets/site') }}/assets/js/owl.carousel.min.js"></script>
+  <script src="{{ asset('resources/assets/site') }}/assets/js/tilt.jquery.js"></script>
+  <script src="{{ asset('resources/assets/site') }}/assets/js/jquery.validate.min.js"></script>
+  <script src="{{ asset('resources/assets/site') }}/assets/js/additional-methods.min.js"></script>
+  <script src="{{ asset('resources/assets/site') }}/assets/js/contact.js"></script>
+  <script src="{{ asset('resources/assets/site') }}/assets/js/scroll.js"></script>
+  <script src="{{ asset('resources/assets/site') }}/assets/js/script.js"></script>
+</body>
+
+</html>
