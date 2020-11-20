@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\BookingAds;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\City as CityModel;
 use App\Models\Nationality as NationalityModel;
@@ -33,6 +34,8 @@ class MiniProviderResource extends JsonResource
             'lat' => $this->lat,
             'lng' => $this->lng,
             'product_count' => $this->Services->count(),
+            'offer_count' => $this->Services->where('has_offer' , 'yes')->count(),
+            'ads_count'=>BookingAds::where('user_id',$this->id)->count(),
         ];
     }
 }
