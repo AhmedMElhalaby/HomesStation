@@ -84,7 +84,13 @@ class CategoryController extends Controller
         if (!Category::find($id)) {
             return redirect()->route('category.index')->with('class', 'alert alert-danger')->with('message', trans('dash.try_2_access_not_found_content'));
         }
-        $category = Category::find($id)->update($request->validated());
+        $category = Category::find($id);
+        $category->update($request->validated());
+        if(!$request->filled('is_deliverable')){
+            $category->is_deliverable = false;
+            $category->save();
+        }
+
         return redirect()->route('category.index');
     }
 
