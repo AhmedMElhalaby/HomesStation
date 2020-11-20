@@ -9,7 +9,7 @@ class BookingAds extends Model
 {
     protected $table = 'booking_ads';
 
-    protected $fillable = ['user_id', 'city_id', 'category_id', 'date_day', 'image', 'acceptable', 'desc'];
+    protected $fillable = ['user_id', 'city_id', 'category_id', 'date_day', 'image', 'acceptable', 'desc','is_hidden'];
 
     protected $appends = ['image200', 'image400', 'image600'];
 
@@ -22,7 +22,7 @@ class BookingAds extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    
+
     public function City()
     {
         return $this->belongsTo(City::class);

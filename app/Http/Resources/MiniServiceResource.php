@@ -17,6 +17,7 @@ class MiniServiceResource extends JsonResource
         return [
             'id' => $this->id,
             'category_provider_id' => $this->category_provider_id,
+            'CategoryProvider'=>new CategoryProvider($this->CategoryProvider),
             'subcategory_id' => $this->subcategory_id,
             'category_type' => $this->Category->type,
             'name' => $this->name,

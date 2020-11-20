@@ -21,6 +21,7 @@ class CategoryProvider extends JsonResource
             'type' => $this->Category->type,
             'ads_count' => $this->Category->BookingAd()->accepted()->count(),
             'image' => $this->Category->image400,
+            'Category'=>new Category($this->Category),
             'provider_data' => [
                 'id' => $this->Provider->id,
                 'username' => $this->Provider->username,

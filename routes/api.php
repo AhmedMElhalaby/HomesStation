@@ -15,6 +15,7 @@ Route::post('complaint', 'Api\ContactController@complaint');
 Route::get('countries', 'Api\CountryController@index');
 Route::get('ads/days', 'Api\AdsController@days');
 Route::get('ads/{category_id}/today', 'Api\AdsController@ads_today');
+Route::post('ads/{id}/update_availability', 'Api\AdsController@update_availability');
 Route::get('countries/{country_id}/cities', 'Api\CityController@index');
 Route::get('nationalities', 'Api\NationalityController@index');
 Route::get('bank_accounts', 'Api\BankController@index');
@@ -67,9 +68,9 @@ Route::group(['prefix' => 'provider'], function () {
     Route::get('{provider_id}/rates', 'Api\ProviderController@get_rates');
     Route::post('{provider_id}/categories/{category_id}/services', 'Api\ServiceController@services_by_category_id_provider_id');
     Route::post('category_provider/{category_provider_id}/services', 'Api\ServiceController@services_by_category_provider');
-    
+
     Route::post('{provider_id}/my_services', 'Api\ProviderController@my_services');
-    
+
     Route::group(['prefix' => 'service'], function () {
         Route::get('{service_id}', 'Api\ServiceController@show');
     });
@@ -102,10 +103,10 @@ Route::group(['middleware' => 'jwt.auth'], function () {
         Route::put('profile/update', 'Api\ProviderController@update');
         Route::put('store/update', 'Api\ProviderController@update_store_data');
         Route::put('password/update', 'Api\ProviderController@update_password');
-        Route::get('statistics', 'Api\ProviderController@statistics');        
+        Route::get('statistics', 'Api\ProviderController@statistics');
         Route::post('{product_id}/report', 'Api\ProviderController@send_report');
         Route::group(['prefix' => 'ads'], function () {
-            Route::post('send', 'Api\AdsController@send');            
+            Route::post('send', 'Api\AdsController@send');
         });
         Route::group(['prefix' => 'service'], function () {
             Route::post('add', 'Api\ServiceController@store');
@@ -179,5 +180,5 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('transaction/send', 'Api\BankTransferController@send_transaction');
     Route::get('notifications', 'Api\NotificationController@show');
     Route::delete('notifications/{notification_id}/delete', 'Api\NotificationController@delete');
-    
+
 });
