@@ -20,9 +20,9 @@ class Subcategory extends Model
 
     public function Category()
     {
-        return $this->belongsTo('App/Models/Category', 'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
-    
+
     public function Services()
     {
         return $this->hasMany(Service::class);
