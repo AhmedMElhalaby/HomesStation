@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Category as CategoryResource;
+use App\Http\Resources\CategoryAuth;
 use App\Models\Category;
 use App\Http\Resources\MiniProviderResource;
 use App\User;
@@ -15,6 +16,9 @@ class CategoryController extends MasterController
 {
     public function index()
     {
+        if(auth('api')->check()){
+            return response(['status' => 'true', 'message' => '', 'data' => CategoryAuth::collection(Category::all())], 200);
+        }
         return response(['status' => 'true', 'message' => '', 'data' => CategoryResource::collection(Category::all())], 200);
     }
 
@@ -41,7 +45,7 @@ class CategoryController extends MasterController
         $services = Service::where(['category_id' => $category_id]);
         if ($request->subcategory_id) {
             $services->where(['subcategory_id' => $request->subcategory_id]);
-        }        
+        }
         return response(['status' => 'true', 'message' => '', 'data' => MiniServiceResource::collection($services->get())], 200);
 
     }
