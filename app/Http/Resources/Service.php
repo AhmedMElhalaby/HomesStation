@@ -37,6 +37,8 @@ class Service extends JsonResource
             'additions' => count($this->Additions) <= 0 ? [] : Addition::collection($this->Additions),
             'images' => count($this->Images) <= 0 ? [] : Image::collection($this->Images),
             'provider_data' => new MiniProviderResource($this->Porivder),
+            'is_hidden' => $this->is_hidden,
+
         ];
     }
 }

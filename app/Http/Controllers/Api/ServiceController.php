@@ -31,10 +31,10 @@ class ServiceController extends MasterController
         }
     }
 
-    /** 
+    /**
      * Store New Product api
-     * 
-     * @return \Illuminate\Http\Response 
+     *
+     * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
     {
@@ -64,10 +64,10 @@ class ServiceController extends MasterController
         return response()->json(['status' => 'true', 'message' => trans('app.added_successfully'), 'data' => new ServiceResource(Service::find($service->id))], 200);
     }
 
-    /** 
+    /**
      * Show Product data api
-     * 
-     * @return \Illuminate\Http\Response 
+     *
+     * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $service_id = null)
     {
@@ -80,10 +80,10 @@ class ServiceController extends MasterController
         return response(['status' => 'true', 'message' => '', 'data' => new ServiceResource($service)], 200);
     }
 
-    /** 
+    /**
      * Update Product data api
-     * 
-     * @return \Illuminate\Http\Response 
+     *
+     * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, $service_id = null)
     {
@@ -125,10 +125,10 @@ class ServiceController extends MasterController
         return response(['status' => 'true', 'message' => '', 'data' => new ServiceResource(Service::find($service_id))], 200);
     }
 
-    /** 
+    /**
      * Delete Product data api
-     * 
-     * @return \Illuminate\Http\Response 
+     *
+     * @return \Illuminate\Http\Response
      */
     public function delete(Request $request, $service_id = null)
     {
@@ -142,10 +142,10 @@ class ServiceController extends MasterController
         return response(['status' => 'true', 'message' => trans('app.deleted_successfully'), 'data' => null], 200);
     }
 
-    /** 
+    /**
      * Delete Image api
-     * 
-     * @return \Illuminate\Http\Response 
+     *
+     * @return \Illuminate\Http\Response
      */
     public function delete_image(Request $request, $image_id = null)
     {
@@ -159,10 +159,10 @@ class ServiceController extends MasterController
         return response(['status' => 'true', 'message' => trans('app.deleted_successfully'), 'data' => null], 200);
     }
 
-    /** 
+    /**
      * Delete Addition api
-     * 
-     * @return \Illuminate\Http\Response 
+     *
+     * @return \Illuminate\Http\Response
      */
     public function delete_addition(Request $request, $addition_id = null)
     {
@@ -176,10 +176,10 @@ class ServiceController extends MasterController
         return response(['status' => 'true', 'message' => trans('app.deleted_successfully'), 'data' => null], 200);
     }
 
-    /** 
+    /**
      * Get Services By Category Provider api
-     * 
-     * @return \Illuminate\Http\Response 
+     *
+     * @return \Illuminate\Http\Response
      */
     public function services_by_category_provider(Request $request, $category_provider_id = null)
     {
@@ -202,10 +202,10 @@ class ServiceController extends MasterController
 
     }
 
-    /** 
+    /**
      * Get Services By Category Provider api
-     * 
-     * @return \Illuminate\Http\Response 
+     *
+     * @return \Illuminate\Http\Response
      */
     public function services_by_category_id_provider_id(Request $request, $provider_id = null, $category_id = null)
     {
@@ -263,5 +263,22 @@ class ServiceController extends MasterController
             'reason' => $request->reason,
         ]);
         return response(['status' => 'true', 'message' => trans('app.sent_successfully'), 'data' => null], 200);
+    }
+    public function update_availability(Request $request, $id)
+    {
+        if ($id == null) {
+            return response()->json(['status' => 'false', 'message' => trans('id is required'), 'data' => null], 422);
+        }
+        $Service = Service::find($id);
+        if (!$Service) {
+            return response()->json(['status' => 'false', 'message' => trans('Service is not found'), 'data' => null], 404);
+        }
+        if ($Service->is_hidden) {
+            $Service->is_hidden = false;
+        }else{
+            $Service->is_hidden = true;
+        }
+        $Service->save();
+        return response()->json(['status' => 'true', 'message' => '', 'data' => new \App\Http\Resources\Service($Service)], 200);
     }
 }

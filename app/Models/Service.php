@@ -11,7 +11,7 @@ class Service extends Model
     protected $fillable = [
         'category_provider_id', 'provider_id', 'category_id', 'subcategory_id', 'subcategory_tag_id', 'name', 'price', 'has_offer',
         'offer_price', 'description', 'lat', 'lng', 'far_enough', 'execution_time', 'availability', 'views_count',
-        'provider_mobile'
+        'provider_mobile','is_hidden'
     ];
 
     public function Images()

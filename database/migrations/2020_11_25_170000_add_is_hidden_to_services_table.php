@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIsHiddenToBookingAdsTable extends Migration
+class AddIsHiddenToServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddIsHiddenToBookingAdsTable extends Migration
      */
     public function up()
     {
-        Schema::table('booking_ads', function (Blueprint $table) {
+        Schema::table('services', function (Blueprint $table) {
             $table->boolean('is_hidden')->default(false);
         });
     }
@@ -25,7 +25,7 @@ class AddIsHiddenToBookingAdsTable extends Migration
      */
     public function down()
     {
-        Schema::table('booking_ads', function (Blueprint $table) {
+        Schema::table('services', function (Blueprint $table) {
             $table->dropColumn('is_hidden');
         });
     }

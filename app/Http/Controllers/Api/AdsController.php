@@ -36,7 +36,7 @@ class AdsController extends MasterController
             $day_data = [];
             $day_data['day_name'] = $carbon->format('l');
             $day_data['date'] = $carbon->toDateString();
-            $ads_count = BookingAds::where(['city_id' => $city_id, 'category_id' => $request->category_id, 'is_hidden' => false])->whereDate('date_day', $carbon->toDateString())->accepted()->count();
+            $ads_count = BookingAds::where(['city_id' => $city_id, 'category_id' => $request->category_id])->whereDate('date_day', $carbon->toDateString())->accepted()->count();
             $day_data['ads_count'] = $ads_count;
             $day_data['availability'] = $ads_count >= 10 ? 'unavailable' : 'available';
             $data[] = $day_data;
@@ -52,24 +52,7 @@ class AdsController extends MasterController
         if (!Category::find($category_id)) {
             return response()->json(['status' => 'false', 'message' => trans('app.category_not_found'), 'data' => null], 404);
         }
-        $ads = BookingAds::where(['category_id' => $category_id, 'city_id' => $request->city_id, 'is_hidden' => false])->accepted()->today()->get();
+        $ads = BookingAds::where(['category_id' => $category_id, 'city_id' => $request->city_id])->accepted()->today()->get();
         return response()->json(['status' => 'true', 'message' => '', 'data' => Ads::collection($ads)], 200);
-    }
-    public function update_availability(Request $request, $id)
-    {
-        if ($id == null) {
-            return response()->json(['status' => 'false', 'message' => trans('id is required'), 'data' => null], 422);
-        }
-        $ad = BookingAds::find($id);
-        if (!$ad) {
-            return response()->json(['status' => 'false', 'message' => trans('Ad is not found'), 'data' => null], 404);
-        }
-        if ($ad->is_hidden) {
-            $ad->is_hidden = false;
-        }else{
-            $ad->is_hidden = true;
-        }
-        $ad->save();
-        return response()->json(['status' => 'true', 'message' => '', 'data' => new Ads($ad)], 200);
     }
 }

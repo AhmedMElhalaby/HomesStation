@@ -18,7 +18,6 @@ class Ads extends JsonResource
             'id' => $this->id,
             'desc' => $this->desc,
             'image' => $this->image400,
-            'is_hidden' => $this->is_hidden,
             'provider_data' => new MiniProviderResource($this->User),
         ];
     }

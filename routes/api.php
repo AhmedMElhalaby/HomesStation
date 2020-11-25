@@ -15,7 +15,6 @@ Route::post('complaint', 'Api\ContactController@complaint');
 Route::get('countries', 'Api\CountryController@index');
 Route::get('ads/days', 'Api\AdsController@days');
 Route::get('ads/{category_id}/today', 'Api\AdsController@ads_today');
-Route::post('ads/{id}/update_availability', 'Api\AdsController@update_availability');
 Route::get('countries/{country_id}/cities', 'Api\CityController@index');
 Route::get('nationalities', 'Api\NationalityController@index');
 Route::get('bank_accounts', 'Api\BankController@index');
@@ -73,6 +72,7 @@ Route::group(['prefix' => 'provider'], function () {
 
     Route::group(['prefix' => 'service'], function () {
         Route::get('{service_id}', 'Api\ServiceController@show');
+        Route::post('{service_id}/update_availability', 'Api\ServiceController@update_availability');
     });
 });
 
