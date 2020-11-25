@@ -20,6 +20,7 @@ class Service extends JsonResource
             'CategoryProvider'=>new CategoryProvider($this->CategoryProvider),
             'subcategory_id' => $this->subcategory_id,
             'category_type' => $this->Category->type,
+            'Category'=>new Category($this->Category),
             'name' => $this->name,
             'price' => $this->price,
             'has_offer' => $this->has_offer,
