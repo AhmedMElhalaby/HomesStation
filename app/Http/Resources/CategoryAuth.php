@@ -19,6 +19,7 @@ class CategoryAuth extends JsonResource
             'name' => $this['name_' . app()->getLocale()],
             'type' => $this->type,
             'ads_count' => $this->BookingAd()->where('user_id',auth('api')->user()->id)->accepted()->count(),
+            'services_count' => $this->Services()->where('provider_id',auth('api')->user()->id)->count(),
             'image' => $this->image400,
             'is_deliverable' => $this->is_deliverable,
         ];

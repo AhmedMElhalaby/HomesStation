@@ -19,6 +19,7 @@ class Category extends JsonResource
             'name' => $this['name_' . app()->getLocale()],
             'type' => $this->type,
             'ads_count' => $this->BookingAd()->accepted()->count(),
+            'services_count' => $this->Services()->count(),
             'image' => $this->image400,
             'is_deliverable' => $this->is_deliverable,
         ];

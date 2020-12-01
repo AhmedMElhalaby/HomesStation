@@ -29,6 +29,11 @@ class Category extends Model
         return $this->hasMany(BookingAds::class, 'category_id');
     }
 
+    public function Services()
+    {
+        return $this->hasMany(Service::class, 'category_id');
+    }
+
     public function Subcategories()
     {
         return $this->hasMany(Subcategory::class, 'category_id');
