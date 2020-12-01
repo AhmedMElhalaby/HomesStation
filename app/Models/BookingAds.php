@@ -9,7 +9,7 @@ class BookingAds extends Model
 {
     protected $table = 'booking_ads';
 
-    protected $fillable = ['user_id', 'city_id', 'category_id', 'date_day', 'image', 'acceptable', 'desc'];
+    protected $fillable = ['user_id', 'city_id', 'category_id', 'date_day', 'image', 'acceptable', 'desc', 'counter_views', 'counter_clicks'];
 
     protected $appends = ['image200', 'image400', 'image600'];
 

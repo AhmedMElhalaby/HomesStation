@@ -13,6 +13,7 @@ return [
     // category
     'category_id_required' => 'category_id is required',
     'category_not_found' => 'category not found',
+    'ad_not_found' => 'Ad not found',
 
     'subcategory_id_required' => 'subcategory_id is required',
 

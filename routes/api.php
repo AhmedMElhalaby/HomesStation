@@ -14,6 +14,7 @@ Route::post('contact', 'Api\ContactController@index');
 Route::post('complaint', 'Api\ContactController@complaint');
 Route::get('countries', 'Api\CountryController@index');
 Route::get('ads/days', 'Api\AdsController@days');
+Route::get('ads/{id}/click', 'Api\AdsController@add_click');
 Route::get('ads/{category_id}/today', 'Api\AdsController@ads_today');
 Route::get('countries/{country_id}/cities', 'Api\CityController@index');
 Route::get('nationalities', 'Api\NationalityController@index');

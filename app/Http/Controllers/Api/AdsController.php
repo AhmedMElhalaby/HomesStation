@@ -55,4 +55,13 @@ class AdsController extends MasterController
         $ads = BookingAds::where(['category_id' => $category_id, 'city_id' => $request->city_id])->accepted()->today()->get();
         return response()->json(['status' => 'true', 'message' => '', 'data' => Ads::collection($ads)], 200);
     }
+    public function add_click($id){
+        $Object = BookingAds::find($id);
+        if (!$Object) {
+            return response()->json(['status' => 'false', 'message' => trans('app.ad_not_found'), 'data' => null], 404);
+        }
+        $Object->counter_clicks =$Object->counter_clicks+1;
+        $Object->save();
+        return response()->json(['status' => 'true', 'message' => '', 'data' => new Ads($Object)], 200);
+    }
 }

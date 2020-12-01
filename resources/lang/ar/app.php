@@ -13,6 +13,7 @@ return [
     // category
     'category_id_required' => 'category_id مطلوب',
     'category_not_found' => 'القسم غير متاح',
+    'ad_not_found' => 'الإعلان غير متاح',
 
     'subcategory_id_required' => 'subcategory_id مطلوب',
 
