@@ -3,7 +3,7 @@
 return [
     'news' => 'أحدث الاضافات',
     'about' => 'عن التطبيق',
-    'privacy_policy' => 'سياسة الخصوصية',    
+    'privacy_policy' => 'سياسة الخصوصية',
     'not_have_permission' => " لا تملك الصلاحية لعمل هذا الامر ",
     'email_exist' => " هذا البريد موجود بالفعل ",
     'new_fcm_alert' => 'لديك تنبيه جديد',
@@ -13,7 +13,7 @@ return [
     // category
     'category_id_required' => 'category_id مطلوب',
     'category_not_found' => 'القسم غير متاح',
-    
+
     'subcategory_id_required' => 'subcategory_id مطلوب',
 
     // category provider
@@ -77,10 +77,10 @@ return [
 
     // ads
     'reached_to_the_maximum_number_of_ads_in_this_day' => 'تم الوصول الى الحد الأعلى لعدد الإعلانات في هذا اليوم',
-    
+
     // country
     'country_not_found' => 'الدولة غير موجود بالنظام',
-    
+
     // service
     'service_id_required' => 'service_id مطلوب',
     'service_not_found' => 'هذه الخدمة غير موجودة بالنظام',
@@ -103,7 +103,7 @@ return [
     // validation
     'lat_and_lng_required' => 'إحداثيات البحث مطلوبة',
     'deleted_file' => 'ملف محذوف',
-
+    'object_not_found'=>'الهدف غير موجود',
     // device
     'device_type_required' => 'device_type لم تقم بإرسال',
 
@@ -118,7 +118,7 @@ return [
     'wrong_code' => 'الكود المدخل خاطئ',
     'code_message' => 'كود التحقق الخاص بك هو ',
 
-    // chat 
+    // chat
     'conversation_required' => 'الرجاء إرسال conversation_id',
     'conversation_not_found' => 'لا يوجد محادثة',
     'msg_empty' => 'الرسالة فارغة',
@@ -129,6 +129,6 @@ return [
         'title' => 'تطبيق هومز استيشن',
         'new_chat_message' => 'رسالة جديدة',
     ],
-    
+
     'sub_cat_id_and_txt_required' => 'يجب ارسال القسم الفرعى ونص البحث',
 ];

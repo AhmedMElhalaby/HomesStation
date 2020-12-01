@@ -24,6 +24,19 @@ class SearchController extends MasterController
         ], 200);
     }
 
+    public function provider_show($id){
+        $provider = User::find($id);
+        if ($provider) {
+            return response([
+                'status' => 'true',
+                'message' => '',
+                'data' => new MiniProviderResource($provider)
+            ], 200);
+        }else{
+            return response()->json(['status' => 'false', 'message' => trans('app.object_not_found'), 'data' => null], 422);
+        }
+    }
+
     public function provider_search(Request $request)
     {
         if (!$request->provider_name)

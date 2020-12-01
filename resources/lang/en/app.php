@@ -9,13 +9,13 @@ return [
     'new_fcm_alert' => 'You Have new Alert',
 
     // =====================================
-    
+
     // category
     'category_id_required' => 'category_id is required',
     'category_not_found' => 'category not found',
-    
+
     'subcategory_id_required' => 'subcategory_id is required',
-    
+
     // category provider
     'category_provider_not_found' => 'category provider not found',
     'category_provider_id_required' => 'category_provider_id is required',
@@ -23,7 +23,7 @@ return [
     // user
     'user_id_required' => 'user_id required',
     'user_not_found' => 'this user not found on system',
-    
+
     // provider
     'provider_id_required' => 'provider_id required',
     'provider_name_required' => 'provider name is required',
@@ -37,7 +37,7 @@ return [
     // notification
     'notification_id_required' => 'notification_id required',
     'notification_not_found' => 'this notification not found on system',
-    
+
     // order
     'order_id_required' => 'order_id required',
     'has_delegate_required' => 'has_delegate required',
@@ -66,26 +66,26 @@ return [
             'finished_order_with_rate' => 'Finished order',
         ],
     ],
-    
+
     // rate
     'rate_required' => 'rate is required',
     'reason_required' => 'reason is required',
 
     // ads
     'reached_to_the_maximum_number_of_ads_in_this_day' => 'reached to the maximum number of ads in this day',
-    
+
     // country
     'country_not_found' => 'this country not found on system',
-    
+
     // service
     'service_id_required' => 'service_id required',
     'service_not_found' => 'this service not found on system',
     'offer_price_required' => 'offer_price is required',
-    'service_unavailable' => 'Service is currently unavailable',    
-    
+    'service_unavailable' => 'Service is currently unavailable',
+
     // image
     'image_id_required' => 'image_id required',
-    'image_not_found' => 'this image not found on system',    
+    'image_not_found' => 'this image not found on system',
 
     'added_successfully' => 'Added successfully',
     'updated_successfully' => 'Updated successfully',
@@ -115,11 +115,12 @@ return [
     'wrong_code' => 'The input code is wrong',
     'code_message' => 'Your activation code is ',
 
-    // chat 
+    // chat
     'conversation_required' => 'conversation_id is required',
     'conversation_not_found' => 'conversation not found',
     'msg_empty' => 'message is empty',
     'attachment_picture' => 'attachment picture',
+    'object_not_found' => 'Object not found',
 
     // FCM
     'fcm' => [

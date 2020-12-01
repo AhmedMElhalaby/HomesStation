@@ -19,6 +19,7 @@ Route::get('countries/{country_id}/cities', 'Api\CityController@index');
 Route::get('nationalities', 'Api\NationalityController@index');
 Route::get('bank_accounts', 'Api\BankController@index');
 Route::get('nearest_providers', 'Api\SearchController@nearest_providers');
+Route::get('provider_show/{id}', 'Api\SearchController@provider_show');
 Route::get('subscription/providers', 'Api\PackageController@providers');
 Route::get('subscription/delegates', 'Api\PackageController@delegates');
 Route::get('providers/search', 'Api\SearchController@provider_search');

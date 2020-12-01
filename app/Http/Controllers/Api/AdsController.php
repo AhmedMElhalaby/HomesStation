@@ -24,7 +24,7 @@ class AdsController extends MasterController
         if (BookingAds::where(['category_id' => $request->category_id, 'city_id' => $request->city_id])->whereDate('date_day', '=', $request->date_day)->count() >= (integer)settings('number_of_ads'))
             return response()->json(['status' => 'false', 'message' => trans('app.reached_to_the_maximum_number_of_ads_in_this_day'), 'data' => null], 401);
         $booking_ads = BookingAds::create($request->validated() + ['user_id' => $request->user()->id]);
-        return response()->json(['status' => 'true', 'message' => trans('app.sent_successfully'), 'data' => null], 200);
+        return response()->json(['status' => 'true', 'message' => trans('app.sent_successfully'), 'data' => new Ads($booking_ads)], 200);
     }
 
     public function days(Request $request)
