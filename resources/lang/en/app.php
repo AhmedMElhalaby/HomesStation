@@ -95,6 +95,7 @@ return [
     'sent_successfully' => 'Sent successfully',
     'subscription_renewed_successfully' => 'Subscription renewed successfully',
     'not_allowed_to_put_services_from_different_providers_or_categories' => 'You are not allowed to put services from other providers or categories in the same order',
+    'not_allowed_to_put_services_with_different_delivery_type' => 'You are not allowed to put services with different delivery type in the same order',
     'not_allowed_to_modify' => 'You are not allowed to modify the data',
     'not_allowed_to_delete' => 'You are not allowed to delete the data',
 

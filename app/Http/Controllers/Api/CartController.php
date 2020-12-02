@@ -45,14 +45,17 @@ class CartController extends MasterController
             return response()->json(['status' => 'false', 'message' => trans('app.notSubscribed'), 'data' => null], 401);
         if($service->availability == 'unavailable')
             return response()->json(['status' => 'false', 'message' => trans('app.service_unavailable'), 'data' => null], 401);
-        if ($cart != null && $cart->provider_id != $service->provider_id)
+        if ($cart != null && $cart->provider_id != $service->provider_id )
             return response()->json(['status' => 'false', 'message' => trans('app.not_allowed_to_put_services_from_different_providers_or_categories'), 'data' => null], 401);
+        if ($cart != null && $cart->is_deliverable !=$service->Category->is_deliverable )
+            return response()->json(['status' => 'false', 'message' => trans('app.not_allowed_to_put_services_with_different_delivery_type'), 'data' => null], 401);
 
         DB::beginTransaction();
         try {
             $new_cart = Cart::create($request->all() + [
                 'user_id' => $request->user()->id,
                 'provider_id' => $service->provider_id,
+                'is_deliverable' => $service->Category->is_deliverable,
             ]);
             if ($request->additions) {
                 foreach (json_decode($request->additions) as $addition) {

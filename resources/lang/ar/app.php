@@ -98,6 +98,7 @@ return [
     'activated_successfully' => 'تم التفعيل بنجاح',
     'sent_successfully' => 'تم الارسال بنجاح',
     'not_allowed_to_put_services_from_different_providers_or_categories' => 'غير مسموح لك بوضع خدمات من اسرتين مختلفتين أو من قسمين مختلفين في نفس الطلب',
+    'not_allowed_to_put_services_with_different_delivery_type' => 'غير مسموح لك بوضع خدمات من نوع مختلف من التوصيل في نفس الطلب',
     'not_allowed_to_modify' => 'غير مسموح لك بتعديل البيانات',
     'not_allowed_to_delete' => 'غير مسموح لك بحذف البيانات',
 
