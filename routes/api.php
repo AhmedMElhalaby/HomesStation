@@ -79,6 +79,7 @@ Route::group(['prefix' => 'provider'], function () {
 });
 
 Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('ads/my_ads', 'Api\AdsController@my_ads');
 
     Route::group(['prefix' => 'auth'], function () {
         Route::group(['prefix' => 'user'], function () {

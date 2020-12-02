@@ -19,7 +19,8 @@ class CategoryProvider extends JsonResource
             'category_id' => $this->category_id,
             'name' => $this->Category['name_' . app()->getLocale()],
             'type' => $this->Category->type,
-            'ads_count' => $this->Category->BookingAd()->accepted()->count(),
+            'ads_count' => $this->Category->BookingAd()->where('user_id',$this->id)->accepted()->count(),
+            'services_count' => $this->Category->Services()->where('provider_id',$this->id)->count(),
             'image' => $this->Category->image400,
             'Category'=>new Category($this->Category),
             'provider_data' => [

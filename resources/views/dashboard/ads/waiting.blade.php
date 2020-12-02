@@ -25,7 +25,7 @@
                 <th class="text-center"> {{ trans('dash.date_day') }} </th>
                 <th class="text-center"> {{ trans('dash.ads.status') }} </th>
                 <th class="text-center"> {{ trans('dash.ads.desc') }} </th>
-{{--                <th class="text-center"> {{ trans('dash.ads.has_paid') }} </th>--}}
+                <th class="text-center"> {{ trans('dash.ads.has_paid') }} </th>
                 <th class="text-center"> {{ trans('dash.created_at') }} </th>
                 <th class="text-center"> {{ trans('dash.actions') }} </th>
             </tr>
@@ -41,15 +41,16 @@
                 <td class="text-center"> {{ $ad->date_day }} </td>
                 <td class="text-center"><span class="badge badge-primary"> {{ trans('dash.ads.waiting') }} </span></td>
                 <td class="text-center"> {{ $ad->desc }} </td>
-{{--                @php--}}
-{{--                    $bt = \App\Models\BankTransfer::where('type','pay_advertising_fees')->where('type_id',$ad->id)->first();--}}
-{{--                    if($bt){--}}
-
-{{--                    }else{--}}
-
-{{--                    }--}}
-{{--                @endphp--}}
-{{--                <td class="text-center"> {{  }} </td>--}}
+                @php
+                    $bt = \App\Models\BankTransfer::where('type','pay_advertising_fees')->where('type_id',$ad->id)->first();
+                    $tr = \App\Models\Transactions::where('type','pay_advertising_fees')->where('type_id',$ad->id)->first();
+                    if($bt || $tr){
+                        $has_paid = '<span class="label bg-success-400">مدفوع</span>';
+                    }else{
+                        $has_paid = '<span class="label bg-danger-400">غير مدفوع</span>';
+                    }
+                @endphp
+                <td class="text-center"> {!! $has_paid !!} </td>
                 <td class="text-center"> {{ $ad->created_at->diffforhumans() }} </td>
                 <td class="text-center">
                     <a data-popup="tooltip" title="{{ trans('dash.edit_data') }}" onclick="sweet_delete( '{{ route('ads.reply') }}', {{ $ad->id }}, 'accept' )" class="btn btn-primary"><i class="icon-checkmark3"></i></a>

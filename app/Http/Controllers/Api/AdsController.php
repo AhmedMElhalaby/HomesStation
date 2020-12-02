@@ -64,4 +64,9 @@ class AdsController extends MasterController
         $Object->save();
         return response()->json(['status' => 'true', 'message' => '', 'data' => new Ads($Object)], 200);
     }
+    public function my_ads(Request $request){
+        $Objects = BookingAds::where('user_id',auth()->user()->id)->get();
+        return response()->json(['status' => 'true', 'message' => '', 'data' => Ads::collection($Objects)], 200);
+
+    }
 }

@@ -31,7 +31,7 @@ class StoreRequest extends FormRequest
             'account_number' => 'required',
             'amount_of_transfer' => 'required',
             'type' => 'required',
-            'type_id' => 'required_if:type,pay_of_the_provider_subscription,pay_of_the_delegate_subscription',
+            'type_id' => 'required_if:type,pay_of_the_provider_subscription,pay_of_the_delegate_subscription,pay_advertising_fees',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif',
         ];
     }

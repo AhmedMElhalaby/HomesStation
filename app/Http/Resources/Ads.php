@@ -14,6 +14,9 @@ class Ads extends JsonResource
      */
     public function toArray($request)
     {
+        $bt = \App\Models\BankTransfer::where('type','pay_advertising_fees')->where('type_id',$ad->id)->first();
+        $tr = \App\Models\Transactions::where('type','pay_advertising_fees')->where('type_id',$ad->id)->first();
+
         return [
             'id' => $this->id,
             'desc' => $this->desc,
@@ -21,6 +24,7 @@ class Ads extends JsonResource
             'counter_views' => $this->counter_views,
             'counter_clicks' => $this->counter_clicks,
             'provider_data' => new MiniProviderResource($this->User),
+            'has_paid' => ($bt || $tr)?true:false,
         ];
     }
 }
