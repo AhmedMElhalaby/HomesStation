@@ -14,8 +14,8 @@ class Ads extends JsonResource
      */
     public function toArray($request)
     {
-        $bt = \App\Models\BankTransfer::where('type','pay_advertising_fees')->where('type_id',$ad->id)->first();
-        $tr = \App\Models\Transactions::where('type','pay_advertising_fees')->where('type_id',$ad->id)->first();
+        $bt = \App\Models\BankTransfer::where('type','pay_advertising_fees')->where('type_id',$this->id)->first();
+        $tr = \App\Models\Transactions::where('type','pay_advertising_fees')->where('type_id',$this->id)->first();
 
         return [
             'id' => $this->id,
