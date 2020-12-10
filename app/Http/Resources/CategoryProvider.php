@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\BookingAds;
+use \App\Models\Service;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CategoryProvider extends JsonResource
