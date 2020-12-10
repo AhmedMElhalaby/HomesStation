@@ -11,7 +11,8 @@ class Order extends Model
 
     protected $fillable = [
         'user_id', 'provider_id', 'delegate_id', 'category_id', 'order_category_type', 'order_status', 'delivery_price', 'total_order_price',
-        'app_precentage_from_provider', 'has_provider_delegate', 'book_date', 'lat', 'lng', 'retrieve_step', 'app_price_from_provider'
+        'app_precentage_from_provider', 'has_provider_delegate', 'book_date', 'lat', 'lng', 'retrieve_step', 'app_price_from_provider',
+        'is_deliverable'
     ];
 
     public function Provider()

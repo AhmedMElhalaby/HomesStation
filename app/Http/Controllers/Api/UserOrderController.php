@@ -21,10 +21,10 @@ use App\Http\Controllers\General\NotificationController;
 
 class UserOrderController extends MasterController
 {
-    /** 
-     * create new order by user api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * create new order by user api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function create_from_cart(Request $request)
     {
@@ -48,9 +48,10 @@ class UserOrderController extends MasterController
                 'provider_id' => $provider->id,
                 'delivery_price' => 0,
                 'order_status' => 'products_client_waiting',
-                'app_precentage_from_provider' => settings('app_precentage_from_provider'),                
+                'app_precentage_from_provider' => settings('app_precentage_from_provider'),
                 'lat' => $request->lat,
                 'lng' => $request->lng,
+                'is_deliverable'=>$carts[0]->is_deliverable
             ]);
             $total_order_price = 0;
             foreach ($carts as $cart) {
@@ -80,9 +81,9 @@ class UserOrderController extends MasterController
                     //         'count' => $addition_cart->count,
                     //         'addition_service_price' => $addition_cart->Addition->price,
                     //         'total_price' => $total_addition_price,
-                    //     ],                       
+                    //     ],
                     //     // 'order_service_id' => $order_service->id,
-                    //     // 'addition_service_id' => $addition_cart->addition_id,                        
+                    //     // 'addition_service_id' => $addition_cart->addition_id,
                     // ]);
                     $addition_order_service = AdditionOrderService::create([
                         'order_service_id' => $order_service->id,
@@ -159,6 +160,7 @@ class UserOrderController extends MasterController
                 'app_precentage_from_provider' => settings('app_precentage_from_provider'),
                 'lat' => $request->lat,
                 'lng' => $request->lng,
+                'is_deliverable'=>$service->Category->is_deliverable
             ]);
             $service_price = $service->has_offer == 'no' ? $service->price : ($service->price - ($service->price * $service->offer_price) / 100);
             $booking_order = BookingOrder::create([
@@ -201,10 +203,10 @@ class UserOrderController extends MasterController
         return response()->json(['status' => 'true', 'message' => trans('app.sent_successfully'), 'data' => null], 200);
     }
 
-    /** 
-     * create new order by user api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * create new order by user api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function my_orders(Request $request)
     {
@@ -227,10 +229,10 @@ class UserOrderController extends MasterController
         }
     }
 
-    /** 
-     * order details for user api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * order details for user api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function details(Request $request, $order_id = null)
     {
@@ -357,7 +359,7 @@ class UserOrderController extends MasterController
             return response()->json(['status' => 'false', 'message' => trans('auth.something_went_wrong_please_try_again'), 'data' => null], 401);
         }
     }
-    
+
     public function cancel_order(Request $request, $order_id = null)
     {
         if (!User::where('type', 'user')->find($request->user()->id))
@@ -373,7 +375,7 @@ class UserOrderController extends MasterController
             return response()->json(['status' => 'false', 'message' => trans('app.order_not_found'), 'data' => null], 404);
         if (!Order::where(['user_id' => $user->id])->whereIn('order_status', ['products_client_waiting', 'services_client_waiting'])->find($order_id))
             return response()->json(['status' => 'false', 'message' => trans('app.not_allowed_to_modify'), 'data' => null], 505);
-            
+
         try {
             $order = Order::find($order_id);
             if ($order->order_category_type == 'products') {

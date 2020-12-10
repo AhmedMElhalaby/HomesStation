@@ -14,10 +14,10 @@ use App\Http\Controllers\General\NotificationController;
 class ProviderOrderController extends MasterController
 {
 
-    /** 
-     * new orders for provider api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * new orders for provider api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function new_orders(Request $request)
     {
@@ -46,10 +46,10 @@ class ProviderOrderController extends MasterController
         }
     }
 
-    /** 
-     * current orders for provider api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * current orders for provider api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function current_orders(Request $request)
     {
@@ -85,10 +85,10 @@ class ProviderOrderController extends MasterController
         }
     }
 
-    /** 
-     * current orders for provider api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * current orders for provider api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function finished_orders(Request $request)
     {
@@ -121,10 +121,10 @@ class ProviderOrderController extends MasterController
         }
     }
 
-    /** 
-     * order details for provider api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * order details for provider api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function details(Request $request, $order_id = null)
     {
@@ -150,10 +150,10 @@ class ProviderOrderController extends MasterController
         }
     }
 
-    /** 
-     * accept order by provider api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * accept order by provider api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function accept_order(Request $request, $order_id = null)
     {
@@ -193,49 +193,52 @@ class ProviderOrderController extends MasterController
             }
 
             // =========================== Notification ===========================
-            $title = trans('app.fcm.title');
+            if($order->is_deliverable){
 
-            $fcm_data = [];
-            $fcm_data['title'] = $title;
+                $title = trans('app.fcm.title');
 
-            $body_ar = 'قام ' . $request->user()->username . ' بالموافقة على الطلب رقم ' . $order->id;
-            $body_en = $request->user()->username . ' has accepted order No. ' . $order->id;
-            $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
+                $fcm_data = [];
+                $fcm_data['title'] = $title;
 
-            $fcm_data['key'] = 'accept_order';
-            $fcm_data['body'] = $body;
-            $fcm_data['msg_sender'] = $request->user()->username;
-            $fcm_data['sender_logo'] = $request->user()->profile_image;
-            $fcm_data['order_id'] = $order->id;
-            $fcm_data['time'] = $order->updated_at->diffforhumans();
+                $body_ar = 'قام ' . $request->user()->username . ' بالموافقة على الطلب رقم ' . $order->id;
+                $body_en = $request->user()->username . ' has accepted order No. ' . $order->id;
+                $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
 
-            add_notification($order->user_id, 'order', $order->id, $body_ar, $body_en);
-            if (Device::where('user_id', $order->user_id)->exists()) {
-                NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($order->user_id, $title, $body, $fcm_data, (60 * 20));
-            }
-            if ($order->has_provider_delegate == 'no') {
-                $delegates = User::where(['type' => 'delegate'])->active()->subscribed()->get();
-                foreach ($delegates as $delegate) {
-                    $fcm_data = [];
-                    $fcm_data['title'] = $title;
+                $fcm_data['key'] = 'accept_order';
+                $fcm_data['body'] = $body;
+                $fcm_data['msg_sender'] = $request->user()->username;
+                $fcm_data['sender_logo'] = $request->user()->profile_image;
+                $fcm_data['order_id'] = $order->id;
+                $fcm_data['time'] = $order->updated_at->diffforhumans();
 
-                    $body_ar = 'طلب جديد';
-                    $body_en = 'new order';
-                    $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
+                add_notification($order->user_id, 'order', $order->id, $body_ar, $body_en);
+                if (Device::where('user_id', $order->user_id)->exists()) {
+                    NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($order->user_id, $title, $body, $fcm_data, (60 * 20));
+                }
+                if ($order->has_provider_delegate == 'no') {
+                    $delegates = User::where(['type' => 'delegate'])->active()->subscribed()->get();
+                    foreach ($delegates as $delegate) {
+                        $fcm_data = [];
+                        $fcm_data['title'] = $title;
 
-                    $fcm_data['key'] = 'new_order';
-                    $fcm_data['body'] = $body;
-                    $fcm_data['msg_sender'] = $request->user()->username;
-                    $fcm_data['sender_logo'] = $request->user()->profile_image;
-                    $fcm_data['order_id'] = $order->id;
-                    $fcm_data['time'] = $order->updated_at->diffforhumans();
+                        $body_ar = 'طلب جديد';
+                        $body_en = 'new order';
+                        $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
 
-                    if (Device::where('user_id', $delegate->id)->exists()) {
-                        NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($delegate->id, $title, $body, $fcm_data, (60 * 20));
+                        $fcm_data['key'] = 'new_order';
+                        $fcm_data['body'] = $body;
+                        $fcm_data['msg_sender'] = $request->user()->username;
+                        $fcm_data['sender_logo'] = $request->user()->profile_image;
+                        $fcm_data['order_id'] = $order->id;
+                        $fcm_data['time'] = $order->updated_at->diffforhumans();
+
+                        if (Device::where('user_id', $delegate->id)->exists()) {
+                            NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($delegate->id, $title, $body, $fcm_data, (60 * 20));
+                        }
                     }
                 }
+                // =========================== Notification ===========================
             }
-            // =========================== Notification ===========================
 
             return response()->json(['status' => 'true', 'message' => trans('app.sent_successfully'), 'data' => new OrderDetails(Order::find($order_id))], 200);
         } catch (Exception $e) {
@@ -243,10 +246,10 @@ class ProviderOrderController extends MasterController
         }
     }
 
-    /** 
-     * accept order by provider api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * accept order by provider api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function reject_order(Request $request, $order_id = null)
     {
@@ -305,10 +308,10 @@ class ProviderOrderController extends MasterController
         }
     }
 
-    /** 
-     * accept order by provider api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * accept order by provider api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function successfully_processed(Request $request, $order_id = null)
     {
@@ -387,10 +390,10 @@ class ProviderOrderController extends MasterController
         }
     }
 
-    /** 
-     * accept order by provider api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * accept order by provider api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function delivered_order_to_delegate(Request $request, $order_id = null)
     {
@@ -450,10 +453,10 @@ class ProviderOrderController extends MasterController
         }
     }
 
-    /** 
-     * accept order by provider api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * accept order by provider api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function finish_order(Request $request, $order_id = null)
     {
@@ -499,7 +502,7 @@ class ProviderOrderController extends MasterController
             if (Device::where('user_id', $order->user_id)->exists()) {
                 NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($order->user_id, $title, $body, $fcm_data, (60 * 20));
             }
-            
+
             // =========================== Notification ===========================
 
             return response()->json([
