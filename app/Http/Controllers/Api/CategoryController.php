@@ -42,7 +42,7 @@ class CategoryController extends MasterController
             return response()->json(['status' => 'false', 'message' => trans('app.category_id_required'), 'data' => null], 422);
         if (!Category::find($category_id))
             return response()->json(['status' => 'false', 'message' => trans('app.category_not_found'), 'data' => null], 404);
-        $services = Service::where(['category_id' => $category_id]);
+        $services = Service::where(['category_id' => $category_id])->where('is_hidden',false);
         if ($request->subcategory_id) {
             $services->where(['subcategory_id' => $request->subcategory_id]);
         }

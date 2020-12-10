@@ -194,9 +194,9 @@ class ServiceController extends MasterController
         if ($provider->banned != '0')
             return response()->json(['status' => 'false', 'message' => trans('auth.banned_account'), 'data' => null], 401);
         if ($request->subcategory_id) {
-            $services = Service::where(['category_provider_id' => $category_provider_id, 'subcategory_id' => $request->subcategory_id])->get();
+            $services = Service::where(['category_provider_id' => $category_provider_id, 'subcategory_id' => $request->subcategory_id, 'is_hidden' => false])->get();
         } else {
-            $services = Service::where('category_provider_id', $category_provider_id)->get();
+            $services = Service::where('category_provider_id', $category_provider_id)->where('is_hidden', false)->get();
         }
         return response(['status' => 'true', 'message' => '', 'data' => MiniServiceResource::collection($services)], 200);
 
@@ -224,9 +224,9 @@ class ServiceController extends MasterController
             return response()->json(['status' => 'false', 'message' => trans('auth.banned_account'), 'data' => null], 401);
         $category_provider_data = CategoryProvider::where(['user_id' => $provider_id, 'category_id' => $category_id])->first();
         if ($request->subcategory_id) {
-            $services = Service::where(['category_provider_id' => $category_provider_data->id, 'subcategory_id' => $request->subcategory_id])->get();
+            $services = Service::where(['category_provider_id' => $category_provider_data->id, 'subcategory_id' => $request->subcategory_id, 'is_hidden' => false])->get();
         } else {
-            $services = Service::where('category_provider_id', $category_provider_data->id)->get();
+            $services = Service::where('category_provider_id', $category_provider_data->id)->where('is_hidden', false)->get();
         }
         return response(['status' => 'true', 'message' => '', 'data' => MiniServiceResource::collection($services)], 200);
 
