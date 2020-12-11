@@ -152,7 +152,7 @@ return [
          */
         abdullahobaid\mobilywslaraval\MobilywsProvider::class,
         LaravelFCM\FCMServiceProvider::class,
-
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -216,6 +216,7 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'FCM' => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
+        'Image' => Intervention\Image\ImageManagerStatic::class,
 
     ],
 
