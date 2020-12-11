@@ -49,17 +49,17 @@ class BankTransferController extends Controller
                 $user = User::find($bank_transfer->user_id);
                 $subscription = Subscription::find($bank_transfer->type_id);
                 $expire_date = calc_expire_date($subscription->period_type, $subscription->period);
-                $user->update(['expire_date' => $expire_date]);
+                $user->update(['expire_date' => $expire_date,'expiration_notification'=>false]);
                 $bank_transfer->forceDelete();
-                
+
                 $title_ar = 'قامت إدارة تطبيق هوم استشين بإرسال إشعار';
                 $title_en = 'home station management has sent notice to you';
                 $title = app()->getLocale() == 'ar' ? $title_ar : $title_en;
-    
+
                 $body_ar = 'مرحبا بك في تطبيق هوم استيشن تم تفعيل الاشتراك الخاص بك حتى تاريخ ' . $expire_date;
                 $body_en = 'Welcome to Home Station. Your subscription has been activated up to date ' . $expire_date;
                 $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
-    
+
                 $fcm_data = [];
                 $fcm_data['title'] = $title;
                 $fcm_data['key'] = 'management_message';
@@ -67,13 +67,13 @@ class BankTransferController extends Controller
                 $fcm_data['msg_sender'] = $user->username;
                 $fcm_data['sender_logo'] = asset('storage/app/uploads/default.png');
                 $fcm_data['time'] = date('Y-m-d H:i:s');
-    
+
                 add_notification($user->id, 'management_message', 0, $body_ar, $body_en);
-    
+
                 if (Device::where('user_id', $user->id)->exists()) {
                     NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($user->id, $title, $body, $fcm_data, (60 * 20));
                 }
-                
+
                 $response = ['status' => 'true', 'message' => trans('dash.transfer_was_successful')];
                 return $response;
             } elseif ($bank_transfer->type == 'pay_of_the_delegate_subscription') {
@@ -82,15 +82,15 @@ class BankTransferController extends Controller
                 $expire_date = calc_expire_date($subscription->period_type, $subscription->period);
                 $user->update(['expire_date' => $expire_date]);
                 $bank_transfer->forceDelete();
-                
+
                 $title_ar = 'قامت إدارة تطبيق هوم استشين بإرسال إشعار';
                 $title_en = 'home station management has sent notice to you';
                 $title = app()->getLocale() == 'ar' ? $title_ar : $title_en;
-    
+
                 $body_ar = 'مرحبا بك في تطبيق هوم استيشن تم تفعيل الاشتراك الخاص بك حتى تاريخ ' . $expire_date;
                 $body_en = 'Welcome to Home Station. Your subscription has been activated up to date ' . $expire_date;
                 $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
-    
+
                 $fcm_data = [];
                 $fcm_data['title'] = $title;
                 $fcm_data['key'] = 'management_message';
@@ -98,13 +98,13 @@ class BankTransferController extends Controller
                 $fcm_data['msg_sender'] = $user->username;
                 $fcm_data['sender_logo'] = asset('storage/app/uploads/default.png');
                 $fcm_data['time'] = date('Y-m-d H:i:s');
-    
+
                 add_notification($user->id, 'management_message', 0, $body_ar, $body_en);
-    
+
                 if (Device::where('user_id', $user->id)->exists()) {
                     NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($user->id, $title, $body, $fcm_data, (60 * 20));
                 }
-                
+
                 $response = ['status' => 'true', 'message' => trans('dash.transfer_was_successful')];
                 return $response;
             } else {
@@ -112,7 +112,7 @@ class BankTransferController extends Controller
                 return $response;
             }
             $bank_transfer->forceDelete();
-        } else {            
+        } else {
             $bank_transfer->forceDelete();
             $response = ['status' => 'true', 'message' => trans('dash.transfer_declined')];
             return $response;

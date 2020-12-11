@@ -20,7 +20,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'role_id', 'type', 'username', 'fullname', 'email', 'password', 'mobile', 'city_id', 'identity_number', 'nationality_id', 'avatar',
-        'active', 'banned', 'ban_reason', 'lang', 'code', 'lat', 'lng', 'balance', 'delivery_balance', 'expire_date', 'is_verified', 'license_image'
+        'active', 'banned', 'ban_reason', 'lang', 'code', 'lat', 'lng', 'balance', 'delivery_balance', 'expire_date', 'is_verified', 'license_image','expiration_notification'
     ];
 
     /**
@@ -171,7 +171,7 @@ class User extends Authenticatable implements JWTSubject
         $filename = ImageController::upload_single($value, 'app/uploads/users/avatar');
         $this->attributes['avatar'] = $filename;
     }
-    
+
     public function setLicenseImageAttribute($value)
     {
         if (isset($this->attributes['license_image']) && $this->attributes['license_image'] != '') {
@@ -234,7 +234,7 @@ class User extends Authenticatable implements JWTSubject
             return asset('storage/app/uploads/default.png');
         }
     }
-    
+
     public function getLicenseImageUrlAttribute()
     {
         if ($this->attributes['license_image'] != "") {
