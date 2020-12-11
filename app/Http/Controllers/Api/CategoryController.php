@@ -14,9 +14,9 @@ use App\Http\Resources\MiniServiceResource;
 
 class CategoryController extends MasterController
 {
-    public function index()
+    public function index(Request $request)
     {
-        if(auth('api')->check()){
+        if($request->user()){
             return response(['status' => 'true', 'message' => '', 'data' => CategoryAuth::collection(Category::all())], 200);
         }
         return response(['status' => 'true', 'message' => '', 'data' => CategoryResource::collection(Category::all())], 200);
