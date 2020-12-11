@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\OrderDelegateNotification;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
@@ -172,7 +174,7 @@ class ProviderOrderController extends MasterController
             return response()->json(['status' => 'false', 'message' => trans('app.can_not_accept_or_reject_this_order'), 'data' => null], 505);
         try {
             $order = Order::find($order_id);
-            if ($order->order_category_type == 'products') {
+            if ($order->is_deliverable) {
                 if (!$request->has_delegate)
                     return response()->json(['status' => 'false', 'message' => trans('app.has_delegate_required'), 'data' => null], 401);
                 if ($request->has_delegate == 'no') {
@@ -193,52 +195,55 @@ class ProviderOrderController extends MasterController
             }
 
             // =========================== Notification ===========================
-            if($order->is_deliverable){
 
-                $title = trans('app.fcm.title');
+            $title = trans('app.fcm.title');
 
+            $fcm_data = [];
+            $fcm_data['title'] = $title;
+
+            $body_ar = 'قام ' . $request->user()->username . ' بالموافقة على الطلب رقم ' . $order->id;
+            $body_en = $request->user()->username . ' has accepted order No. ' . $order->id;
+            $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
+
+            $fcm_data['key'] = 'accept_order';
+            $fcm_data['body'] = $body;
+            $fcm_data['msg_sender'] = $request->user()->username;
+            $fcm_data['sender_logo'] = $request->user()->profile_image;
+            $fcm_data['order_id'] = $order->id;
+            $fcm_data['time'] = $order->updated_at->diffforhumans();
+
+            add_notification($order->user_id, 'order', $order->id, $body_ar, $body_en);
+            if (Device::where('user_id', $order->user_id)->exists()) {
+                NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($order->user_id, $title, $body, $fcm_data, (60 * 20));
+            }
+            // =========================== is_deliverable ===========================
+            if ($order->is_deliverable && $order->has_provider_delegate == 'no') {
+                $delegate = User::where(['type' => 'delegate'])->active()->subscribed()->nearest($provider->lat, $provider->lng, settings('num_of_search_km_for_provider'))->first();
+                $OrderDelegateNotification = new OrderDelegateNotification();
+                $OrderDelegateNotification->order_id = $order->id;
+                $OrderDelegateNotification->delegate_id = $delegate->id;
+                $OrderDelegateNotification->save();
+                $order->last_notify = Carbon::today()->format('Y-m-d');
+                $order->save();
                 $fcm_data = [];
                 $fcm_data['title'] = $title;
 
-                $body_ar = 'قام ' . $request->user()->username . ' بالموافقة على الطلب رقم ' . $order->id;
-                $body_en = $request->user()->username . ' has accepted order No. ' . $order->id;
+                $body_ar = 'طلب جديد';
+                $body_en = 'new order';
                 $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
 
-                $fcm_data['key'] = 'accept_order';
+                $fcm_data['key'] = 'new_order';
                 $fcm_data['body'] = $body;
                 $fcm_data['msg_sender'] = $request->user()->username;
                 $fcm_data['sender_logo'] = $request->user()->profile_image;
                 $fcm_data['order_id'] = $order->id;
                 $fcm_data['time'] = $order->updated_at->diffforhumans();
 
-                add_notification($order->user_id, 'order', $order->id, $body_ar, $body_en);
-                if (Device::where('user_id', $order->user_id)->exists()) {
-                    NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($order->user_id, $title, $body, $fcm_data, (60 * 20));
+                if (Device::where('user_id', $delegate->id)->exists()) {
+                    NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($delegate->id, $title, $body, $fcm_data, (60 * 20));
                 }
-                if ($order->has_provider_delegate == 'no') {
-                    $delegates = User::where(['type' => 'delegate'])->active()->subscribed()->get();
-                    foreach ($delegates as $delegate) {
-                        $fcm_data = [];
-                        $fcm_data['title'] = $title;
-
-                        $body_ar = 'طلب جديد';
-                        $body_en = 'new order';
-                        $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
-
-                        $fcm_data['key'] = 'new_order';
-                        $fcm_data['body'] = $body;
-                        $fcm_data['msg_sender'] = $request->user()->username;
-                        $fcm_data['sender_logo'] = $request->user()->profile_image;
-                        $fcm_data['order_id'] = $order->id;
-                        $fcm_data['time'] = $order->updated_at->diffforhumans();
-
-                        if (Device::where('user_id', $delegate->id)->exists()) {
-                            NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($delegate->id, $title, $body, $fcm_data, (60 * 20));
-                        }
-                    }
-                }
-                // =========================== Notification ===========================
             }
+                // =========================== Notification ===========================
 
             return response()->json(['status' => 'true', 'message' => trans('app.sent_successfully'), 'data' => new OrderDetails(Order::find($order_id))], 200);
         } catch (Exception $e) {
