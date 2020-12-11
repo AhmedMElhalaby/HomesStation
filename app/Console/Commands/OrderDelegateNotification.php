@@ -42,7 +42,7 @@ class OrderDelegateNotification extends Command
      */
     public function handle()
     {
-        $Orders = Order::where('status','products_provider_accepted_and_search_about_delegate')->where('last_notify','<=',Carbon::today()->subMinutes(5))->get();
+        $Orders = Order::where('order_status','products_provider_accepted_and_search_about_delegate')->where('last_notify','<=',Carbon::today()->subMinutes(5))->get();
         foreach ($Orders as $order){
             $delegate = User::where('type' , 'delegate')->whereNotIn('id',\App\Models\OrderDelegateNotification::where('order_id',$order->id)->pluck('delegate_id'))->active()->subscribed()->nearest($order->Provider->lat, $order->Provider->lng, settings('num_of_search_km_for_provider'))->first();
             $OrderDelegateNotification = new \App\Models\OrderDelegateNotification();
