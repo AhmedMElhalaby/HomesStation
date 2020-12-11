@@ -16,7 +16,7 @@ class CategoryController extends MasterController
 {
     public function index(Request $request)
     {
-        if($request->user()){
+        if($request->user() && $request->user()->type == 'provider'){
             return response(['status' => 'true', 'message' => '', 'data' => CategoryAuth::collection(Category::all())], 200);
         }
         return response(['status' => 'true', 'message' => '', 'data' => CategoryResource::collection(Category::all())], 200);
