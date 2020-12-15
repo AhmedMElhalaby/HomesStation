@@ -10,7 +10,7 @@ class ImageController extends Controller
 {
     public static function upload_single($request_file, $path,$type=1,$text=null)
     {
-        $name = generate_code() . '_' . time() . '.' . $request_file->getClientOriginalExtension();
+        $name = generate_code() . '_' . time() . '.' . md5(time());
         if($type == 1){
             Image::make($request_file)->save(storage_path($path . '/org' . "/" . $name));
             Image::make($request_file)->resize(200, null, function ($constraint) {
