@@ -31,6 +31,7 @@ class MiniDelegateOrder extends JsonResource
             ],
             'order_status' => order_status($this->order_status),
             'created_time' => $this->created_at->diffforhumans(),
+            'details'=>$this->details
         ];
     }
 }

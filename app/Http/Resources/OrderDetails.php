@@ -28,6 +28,7 @@ class OrderDetails extends JsonResource
             'user_data' => new MiniUserResource($this->User),
             'provider_data' => new MiniProviderResource($this->Provider),
             'delegate_data' => new MiniDelegateResource($this->Delegate),
+            'details'=>$this->details
         ];
         if ($this->order_category_type == 'products') {
             $data['products_order'] = OrderServices::collection(OrderService::where('order_id', $this->id)->get());

@@ -23,6 +23,7 @@ class MiniProviderOrder extends JsonResource
             'city' => $this->User->city_id == 0 ? 0 : new City(CityModel::find($this->User->city_id)),
             'order_status' => order_status($this->order_status),
             'created_time' => $this->created_at->diffforhumans(),
+            'details'=>$this->details
         ];
     }
 }

@@ -23,6 +23,7 @@ class MiniUserOrder extends JsonResource
             'service_name' => null,
             'order_status' => order_status($this->order_status),
             'created_time' => $this->created_at->diffforhumans(),
+            'details'=>$this->details
         ];
     }
 }
