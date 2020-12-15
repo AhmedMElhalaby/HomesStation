@@ -10,7 +10,7 @@ class ImageController extends Controller
 {
     public static function upload_single($request_file, $path,$type=1,$text=null)
     {
-        $name = generate_code() . '_' . time() . '.' . md5(time());
+        $name = generate_code() . '_' . time() . '.' . $request_file->getClientOriginalExtension();
         if($type == 1){
             Image::make($request_file)->save(storage_path($path . '/org' . "/" . $name));
             Image::make($request_file)->resize(200, null, function ($constraint) {
@@ -24,7 +24,7 @@ class ImageController extends Controller
             })->save(storage_path($path . '/600' . "/" . $name));
         }else{
 //            Original Image
-            $watermark = Image::make('logo.png')->resize(150,null,function ($c){
+            $watermark = Image::make(public_path('logo.png'))->resize(150,null,function ($c){
                 $c->aspectRatio();
             });
             $img = Image::make($request_file);
@@ -40,7 +40,7 @@ class ImageController extends Controller
             $img200 = Image::make($request_file)->resize(200, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $watermark = Image::make('logo.png')->resize(50,null,function ($c){
+            $watermark = Image::make(public_path('logo.png'))->resize(50,null,function ($c){
                 $c->aspectRatio();
             });
             $img200->insert($watermark,'bottom-right',10,15);
@@ -55,7 +55,7 @@ class ImageController extends Controller
             $img400 = Image::make($request_file)->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $watermark = Image::make('logo.png')->resize(100,null,function ($c){
+            $watermark = Image::make(public_path('logo.png'))->resize(100,null,function ($c){
                 $c->aspectRatio();
             });
             $img400->text(''.$text, ($img400->width()-70), ($img400->height()-5), function($font) {
@@ -70,7 +70,7 @@ class ImageController extends Controller
             $img600 = Image::make($request_file)->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $watermark = Image::make('logo.png')->resize(150,null,function ($c){
+            $watermark = Image::make(public_path('logo.png'))->resize(150,null,function ($c){
                 $c->aspectRatio();
             });
             $img600->text(''.$text, ($img600->width()-90), ($img600->height()-5), function($font) {

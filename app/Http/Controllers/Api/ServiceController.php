@@ -54,7 +54,7 @@ class ServiceController extends MasterController
                 }
             }
             foreach ($request->file('images') as $image) {
-                $service_image = ImageService::create(['service_id' => $service->id, 'image' => $image->getRealPath()]);
+                $service_image = ImageService::create(['service_id' => $service->id, 'image' => $image]);
             }
             DB::commit();
         } catch (Exception $e) {
