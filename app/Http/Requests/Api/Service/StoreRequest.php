@@ -31,15 +31,15 @@ class StoreRequest extends FormRequest
             'name' => 'required',
             'price' => 'required|numeric',
             'description' => 'required',
-            'images' => 'required',
-            'images.*' => 'image|mimes:jpeg,jpg,png,gif',
+            'images' => 'required|array',
+            'images.*' => 'required|mimes:jpeg,jpg,png,gif',
             'additions' => 'nullable',
             'lat' => 'nullable',
             'lng' => 'nullable',
             'far_enough' => 'nullable',
             'execution_time' => 'nullable',
             'availability' => 'nullable',
-            'provider_mobile' => 'nullable',            
+            'provider_mobile' => 'nullable',
         ];
     }
 
