@@ -59,7 +59,7 @@ class ServiceController extends MasterController
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
-            return response()->json(['status' => 'false', 'message' => trans('auth.something_went_wrong_please_try_again'), 'data' => null], 401);
+            return response()->json(['status' => 'false', 'message' => trans('auth.something_went_wrong_please_try_again'), 'data' => $e->getMessage()], 401);
         }
         return response()->json(['status' => 'true', 'message' => trans('app.added_successfully'), 'data' => new ServiceResource(Service::find($service->id))], 200);
     }
