@@ -35,7 +35,8 @@ class ImageService extends Model
                 ImageController::delete_image_from_folder($this->attributes['image'], 'app/uploads/service');
             }
         }
-        $filename = ImageController::upload_single($value, 'app/uploads/service');
+        return dd($this->Service()->first()->Porivder->name);
+        $filename = ImageController::upload_single($value, 'app/uploads/service',2,@$this->Service()->first()->Porivder->name);
         $this->attributes['image'] = $filename;
     }
     public function getImage200Attribute()
