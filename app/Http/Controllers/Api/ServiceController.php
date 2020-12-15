@@ -53,7 +53,7 @@ class ServiceController extends MasterController
                     $service_addition = $service->Additions()->create((array)$addition);
                 }
             }
-            foreach ($request->images as $image) {
+            foreach ($request->file('images') as $image) {
                 $service_image = ImageService::create(['service_id' => $service->id, 'image' => $image]);
             }
             DB::commit();
