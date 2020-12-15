@@ -51,6 +51,7 @@ class UserOrderController extends MasterController
                 'app_precentage_from_provider' => settings('app_precentage_from_provider'),
                 'lat' => $request->lat,
                 'lng' => $request->lng,
+                'details' => @$request->details,
                 'is_deliverable'=>$carts[0]->is_deliverable
             ]);
             $total_order_price = 0;
@@ -160,6 +161,7 @@ class UserOrderController extends MasterController
                 'app_precentage_from_provider' => settings('app_precentage_from_provider'),
                 'lat' => $request->lat,
                 'lng' => $request->lng,
+                'details' => @$request->details,
                 'is_deliverable'=>$service->Category->is_deliverable
             ]);
             $service_price = $service->has_offer == 'no' ? $service->price : ($service->price - ($service->price * $service->offer_price) / 100);
