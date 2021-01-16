@@ -29,7 +29,7 @@ class UpdateDelegateDataRequest extends FormRequest
             'username' => 'required',
             'email' => 'nullable|email|unique:users,email,' . $this->user()->id,
             'mobile' => 'required|numeric|min:10|unique:users,mobile,' . $this->user()->id,
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'lat' => 'nullable',
             'lng' => 'nullable',
             'city_id' => 'required|exists:cities,id', 
