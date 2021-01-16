@@ -30,13 +30,13 @@ class UpdateProviderDataRequest extends FormRequest
             'email' => 'nullable|email|unique:users,email,' . $this->user()->id,
             'fullname' => 'nullable',
             'mobile' => 'nullable|numeric|min:10|unique:users,mobile,' . $this->user()->id,
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'lat' => 'nullable',
             'lng' => 'nullable',
             'city_id' => 'nullable|exists:cities,id',
             'nationality_id' => 'nullable|exists:nationalities,id',
             'commercial_register_number' => 'nullable|unique:providers,commercial_register_number,' . $this->user()->ProviderData->id,
-            'commercial_register_image' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'commercial_register_image' => 'nullable|mimes:jpeg,jpg,png,gif',
         ];
     }    
 
