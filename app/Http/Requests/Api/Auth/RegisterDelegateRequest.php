@@ -30,10 +30,10 @@ class RegisterDelegateRequest extends FormRequest
             'mobile' => 'required|numeric|unique:users|min:10',
             'email' => 'nullable|email|unique:users',
             'password' => 'required|min:6',
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'city_id' => 'required|exists:cities,id',
             'identity_number' => 'nullable|unique:users',
-            'license_image' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'license_image' => 'nullable|mimes:jpeg,jpg,png,gif',
             'nationality_id' => 'required|exists:nationalities,id',
         ];
     }
