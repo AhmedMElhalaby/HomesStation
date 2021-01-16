@@ -30,7 +30,7 @@ class StoreAds extends FormRequest
             'city_id' => 'required|exists:cities,id',
             'date_day' => 'required',
             'desc' => 'required',
-            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
+            'image' => 'required|mimes:jpeg,jpg,png,gif',
         ];
     }
 
