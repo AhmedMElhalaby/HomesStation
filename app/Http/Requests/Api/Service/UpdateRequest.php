@@ -32,7 +32,7 @@ class UpdateRequest extends FormRequest
             'price' => 'required|numeric',
             'description' => 'required',
             'images' => 'nullable',
-            'images.*' => 'image|mimes:jpeg,jpg,png,gif',
+            'images.*' => 'mimes:jpeg,jpg,png,gif',
             'additions' => 'nullable',
             'lat' => 'nullable',
             'lng' => 'nullable',
