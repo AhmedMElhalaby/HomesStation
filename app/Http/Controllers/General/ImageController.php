@@ -13,16 +13,16 @@ class ImageController extends Controller
     public static function upload_single($request_file, $path,$type=1,$text=null)
     {
         if(!File::exists(public_path($path . '/org' ))){
-            File::makeDirectory(public_path($path . '/org' ));
+            File::makeDirectory(public_path($path . '/org' ),0777,true);
         }
         if(!File::exists(public_path($path . '/200' ))){
-            File::makeDirectory(public_path($path . '/200' ));
+            File::makeDirectory(public_path($path . '/200' ),0777,true);
         }
         if(!File::exists(public_path($path . '/400' ))){
-            File::makeDirectory(public_path($path . '/400' ));
+            File::makeDirectory(public_path($path . '/400' ),0777,true);
         }
         if(!File::exists(public_path($path . '/600' ))){
-            File::makeDirectory(public_path($path . '/600' ));
+            File::makeDirectory(public_path($path . '/600' ),0777,true);
         }
         $name = generate_code() . '_' . time() . '.' . $request_file->getClientOriginalExtension();
         if($type == 1){
