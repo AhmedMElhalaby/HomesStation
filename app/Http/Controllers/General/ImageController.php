@@ -12,7 +12,6 @@ class ImageController extends Controller
 {
     public static function upload_single($request_file, $path,$type=1,$text=null)
     {
-        $path = 'storage/'.$path;
         if(!File::exists(public_path($path . '/org' ))){
             File::makeDirectory(public_path($path . '/org' ),0777,true);
         }
@@ -102,7 +101,6 @@ class ImageController extends Controller
 
     public static function delete_image_from_folder($image_name, $path)
     {
-        $path = 'storage/'.$path;
         if(File::exists(public_path($path . '/org' . "/" . $image_name ))){
             unlink(public_path($path . '/org' . "/" . $image_name));
         }

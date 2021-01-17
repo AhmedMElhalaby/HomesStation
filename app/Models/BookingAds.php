@@ -54,7 +54,7 @@ class BookingAds extends Model
     public function setImageAttribute($value)
     {
         if (isset($this->attributes['image']) && $this->attributes['image'] != '') {
-            if (file_exists(public_path('app/uploads/ads/org' . "/" . $this->attributes['image']))) {
+            if (file_exists(public_path('storage/app/uploads/ads/org' . "/" . $this->attributes['image']))) {
                 ImageController::delete_image_from_folder($this->attributes['image'], 'app/uploads/ads');
             }
         }
@@ -65,7 +65,7 @@ class BookingAds extends Model
     public function getImage200Attribute()
     {
         if ($this->attributes['image'] != "") {
-            if (!file_exists(public_path('app/uploads/ads/200' . "/" . $this->attributes['image']))) {
+            if (!file_exists(public_path('storage/app/uploads/ads/200' . "/" . $this->attributes['image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/ads/200') . '/' . $this->attributes['image'];
@@ -77,7 +77,7 @@ class BookingAds extends Model
     public function getImage400Attribute()
     {
         if ($this->attributes['image'] != "") {
-            if (!file_exists(public_path('app/uploads/ads/400' . "/" . $this->attributes['image']))) {
+            if (!file_exists(public_path('storage/app/uploads/ads/400' . "/" . $this->attributes['image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/ads/400') . '/' . $this->attributes['image'];
@@ -89,7 +89,7 @@ class BookingAds extends Model
     public function getImage600Attribute()
     {
         if ($this->attributes['image'] != "") {
-            if (!file_exists(public_path('app/uploads/ads/600' . "/" . $this->attributes['image']))) {
+            if (!file_exists(public_path('storage/app/uploads/ads/600' . "/" . $this->attributes['image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/ads/600') . '/' . $this->attributes['image'];

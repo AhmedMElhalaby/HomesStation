@@ -36,7 +36,7 @@ class Chat extends Model
             $this->attributes['message'] = $filename;
         } else if ($this->attributes['message_type'] == "voice_message") {
             $filename = generate_code() . '_' . time() . '.' . $value->getClientOriginalExtension();
-            $value->move(public_path('app/uploads/chat/voice_message'), $filename);
+            $value->move(public_path('storage/app/uploads/chat/voice_message'), $filename);
             $this->attributes['message'] = $filename;
         } else {
             $this->attributes['message'] = $value;
@@ -46,12 +46,12 @@ class Chat extends Model
     public function getMessageValueAttribute()
     {
         if ($this->attributes['message_type'] == "image") {
-            if (!file_exists(public_path('app/uploads/chat/images/300' . "/" . $this->attributes['message']))) {
+            if (!file_exists(public_path('storage/app/uploads/chat/images/300' . "/" . $this->attributes['message']))) {
                 return trans('app.deleted_file');
             }
             return asset('storage/app/uploads/chat/images/300') . '/' . $this->attributes['message'];
         } else if($this->attributes['message_type'] == "voice_message") {
-            if (!file_exists(public_path('app/uploads/chat/voice_message' . "/" . $this->attributes['message']))) {
+            if (!file_exists(public_path('storage/app/uploads/chat/voice_message' . "/" . $this->attributes['message']))) {
                 return trans('app.deleted_file');
             }
             return asset('storage/app/uploads/chat/voice_message') . '/' . $this->attributes['message'];

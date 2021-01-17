@@ -21,7 +21,7 @@ class ImageService extends Model
     public function delete()
     {
         if (isset($this->attributes['image']) && $this->attributes['image'] != '') {
-            if (file_exists(public_path('app/uploads/service/org' . "/" . $this->attributes['image']))) {
+            if (file_exists(public_path('storage/app/uploads/service/org' . "/" . $this->attributes['image']))) {
                 ImageController::delete_image_from_folder($this->attributes['image'], 'app/uploads/service');
             }
         }
@@ -31,7 +31,7 @@ class ImageService extends Model
     public function setImageAttribute($value)
     {
         if (isset($this->attributes['image']) && $this->attributes['image'] != '') {
-            if (file_exists(public_path('app/uploads/service/org' . "/" . $this->attributes['image']))) {
+            if (file_exists(public_path('storage/app/uploads/service/org' . "/" . $this->attributes['image']))) {
                 ImageController::delete_image_from_folder($this->attributes['image'], 'app/uploads/service');
             }
         }
@@ -41,7 +41,7 @@ class ImageService extends Model
     public function getImage200Attribute()
     {
         if ($this->attributes['image'] != "") {
-            if (!file_exists(public_path('app/uploads/service/200' . "/" . $this->attributes['image']))) {
+            if (!file_exists(public_path('storage/app/uploads/service/200' . "/" . $this->attributes['image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/service/200') . '/' . $this->attributes['image'];
@@ -53,7 +53,7 @@ class ImageService extends Model
     public function getImage400Attribute()
     {
         if ($this->attributes['image'] != "") {
-            if (!file_exists(public_path('app/uploads/service/400' . "/" . $this->attributes['image']))) {
+            if (!file_exists(public_path('storage/app/uploads/service/400' . "/" . $this->attributes['image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/service/400') . '/' . $this->attributes['image'];
@@ -65,7 +65,7 @@ class ImageService extends Model
     public function getImage600Attribute()
     {
         if ($this->attributes['image'] != "") {
-            if (!file_exists(public_path('app/uploads/service/600' . "/" . $this->attributes['image']))) {
+            if (!file_exists(public_path('storage/app/uploads/service/600' . "/" . $this->attributes['image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/service/600') . '/' . $this->attributes['image'];
