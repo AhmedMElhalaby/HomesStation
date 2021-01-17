@@ -14,16 +14,16 @@ class ImageController extends Controller
     {
 
         if(!File::exists(public_path($path . '/org' . "/" ))){
-            File::makeDirectory(public_path($path . '/org' . "/" ));
+            File::makeDirectory(public_path($path . '/org'  ));
         }
         if(!File::exists(public_path($path . '/200' . "/" ))){
-            File::makeDirectory(public_path($path . '/200' . "/" ));
+            File::makeDirectory(public_path($path . '/200'  ));
         }
         if(!File::exists(public_path($path . '/400' . "/" ))){
-            File::makeDirectory(public_path($path . '/400' . "/" ));
+            File::makeDirectory(public_path($path . '/400'  ));
         }
         if(!File::exists(public_path($path . '/600' . "/" ))){
-            File::makeDirectory(public_path($path . '/600' . "/" ));
+            File::makeDirectory(public_path($path . '/600'  ));
         }
         $name = generate_code() . '_' . time() . '.' . $request_file->getClientOriginalExtension();
         if($type == 1){
