@@ -13,30 +13,30 @@ class ImageController extends Controller
     public static function upload_single($request_file, $path,$type=1,$text=null)
     {
 
-        if(!File::exists(storage_path($path . '/org' . "/" ))){
-            File::makeDirectory(storage_path($path . '/org' . "/" ));
+        if(!File::exists(public_path($path . '/org' . "/" ))){
+            File::makeDirectory(public_path($path . '/org' . "/" ));
         }
-        if(!File::exists(storage_path($path . '/200' . "/" ))){
-            File::makeDirectory(storage_path($path . '/200' . "/" ));
+        if(!File::exists(public_path($path . '/200' . "/" ))){
+            File::makeDirectory(public_path($path . '/200' . "/" ));
         }
-        if(!File::exists(storage_path($path . '/400' . "/" ))){
-            File::makeDirectory(storage_path($path . '/400' . "/" ));
+        if(!File::exists(public_path($path . '/400' . "/" ))){
+            File::makeDirectory(public_path($path . '/400' . "/" ));
         }
-        if(!File::exists(storage_path($path . '/600' . "/" ))){
-            File::makeDirectory(storage_path($path . '/600' . "/" ));
+        if(!File::exists(public_path($path . '/600' . "/" ))){
+            File::makeDirectory(public_path($path . '/600' . "/" ));
         }
         $name = generate_code() . '_' . time() . '.' . $request_file->getClientOriginalExtension();
         if($type == 1){
-            Image::make($request_file)->save(storage_path($path . '/org' . "/" . $name));
+            Image::make($request_file)->save(public_path($path . '/org' . "/" . $name));
             Image::make($request_file)->resize(200, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(storage_path($path . '/200' . "/" . $name));
+            })->save(public_path($path . '/200' . "/" . $name));
             Image::make($request_file)->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(storage_path($path . '/400' . "/" . $name));
+            })->save(public_path($path . '/400' . "/" . $name));
             Image::make($request_file)->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(storage_path($path . '/600' . "/" . $name));
+            })->save(public_path($path . '/600' . "/" . $name));
         }else{
 //            Original Image
             $watermark = Image::make(public_path('logo.png'))->resize(150,null,function ($c){
@@ -50,7 +50,7 @@ class ImageController extends Controller
                 $font->color('#ffffff');
                 $font->align('center');
             });
-            $img->save(storage_path($path . '/org' . "/" . $name));
+            $img->save(public_path($path . '/org' . "/" . $name));
 //            200 Image
             $img200 = Image::make($request_file)->resize(200, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -65,7 +65,7 @@ class ImageController extends Controller
                 $font->color('#ffffff');
                 $font->align('center');
             });
-            $img200->save(storage_path($path . '/200' . "/" . $name));
+            $img200->save(public_path($path . '/200' . "/" . $name));
 //            400 Image
             $img400 = Image::make($request_file)->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -80,7 +80,7 @@ class ImageController extends Controller
                 $font->align('center');
             });
             $img400->insert($watermark,'bottom-right',10,25);
-            $img400->save(storage_path($path . '/400' . "/" . $name));
+            $img400->save(public_path($path . '/400' . "/" . $name));
 //            600 Image
             $img600 = Image::make($request_file)->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -95,16 +95,16 @@ class ImageController extends Controller
                 $font->align('center');
             });
             $img600->insert($watermark,'bottom-right',10,30);
-            $img600->save(storage_path($path . '/600' . "/" . $name));
+            $img600->save(public_path($path . '/600' . "/" . $name));
         }
         return $name;
     }
 
     public static function delete_image_from_folder($image_name, $path)
     {
-        unlink(storage_path($path . '/org' . "/" . $image_name));
-        unlink(storage_path($path . '/200' . "/" . $image_name));
-        unlink(storage_path($path . '/400' . "/" . $image_name));
-        unlink(storage_path($path . '/600' . "/" . $image_name));
+        unlink(public_path($path . '/org' . "/" . $image_name));
+        unlink(public_path($path . '/200' . "/" . $image_name));
+        unlink(public_path($path . '/400' . "/" . $image_name));
+        unlink(public_path($path . '/600' . "/" . $image_name));
     }
 }
