@@ -27,7 +27,7 @@ class UpdateData extends FormRequest
             'username' => 'required',
             'email' => 'nullable|email|unique:users,email,' . auth()->id(),
             'mobile' => 'required|numeric|min:10|unique:users,mobile,' . auth()->id(),
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'city_id' => 'required|exists:cities,id',
         ];
     }

@@ -28,7 +28,7 @@ class DelegateUpdate extends FormRequest
             'email' => 'nullable|email|unique:users,email,' . $this->delegate,
             'mobile' => 'required|numeric|min:10|unique:users,mobile,' . $this->delegate,
             'password' => 'nullable|min:6',
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'city_id' => 'required|exists:cities,id',
             'nationality_id' => 'nullable|exists:nationalities,id',
             'identity_number' => 'nullable|unique:users,identity_number,' . $this->delegate,

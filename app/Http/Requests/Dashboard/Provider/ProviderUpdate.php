@@ -29,7 +29,7 @@ class ProviderUpdate extends FormRequest
             'email' => 'nullable|email|unique:users,email,' . $this->provider,
             'mobile' => 'required|numeric|min:10|unique:users,mobile,' . $this->provider,
             'password' => 'nullable|min:6',
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'city_id' => 'required|exists:cities,id',
             'nationality_id' => 'nullable|exists:nationalities,id',
             'is_verified' => 'required',
@@ -37,7 +37,7 @@ class ProviderUpdate extends FormRequest
             'opening_time' => 'required',
             'closing_time' => 'required',
             'commercial_register_number' => 'nullable|unique:providers,commercial_register_number,' . $this->provider . ',user_id',
-            'commercial_register_image' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'commercial_register_image' => 'nullable|mimes:jpeg,jpg,png,gif',
             'minimum_charge' => 'nullable|numeric',
             'categories' => 'required',
         ];

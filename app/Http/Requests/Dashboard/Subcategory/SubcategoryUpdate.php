@@ -27,7 +27,7 @@ class SubcategoryUpdate extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'name_ar' => 'required',
             'name_en' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'image' => 'nullable|mimes:jpeg,jpg,png,gif',
         ];
     }
 }

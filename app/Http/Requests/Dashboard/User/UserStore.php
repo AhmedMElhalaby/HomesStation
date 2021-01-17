@@ -28,7 +28,7 @@ class UserStore extends FormRequest
             'email' => 'nullable|email|unique:users',
             'mobile' => 'required|numeric|unique:users|min:10',
             'password' => 'required|min:6',
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'city_id' => 'required|exists:cities,id',
         ];
     }

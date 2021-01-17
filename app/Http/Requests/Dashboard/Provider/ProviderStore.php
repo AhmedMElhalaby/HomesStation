@@ -29,7 +29,7 @@ class ProviderStore extends FormRequest
             'email' => 'nullable|email|unique:users',
             'mobile' => 'required|numeric|unique:users|min:10',
             'password' => 'required|min:6',
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'city_id' => 'required|exists:cities,id',
             'nationality_id' => 'nullable|exists:nationalities,id',
             'is_verified' => 'required',
@@ -37,7 +37,7 @@ class ProviderStore extends FormRequest
             'opening_time' => 'required',
             'closing_time' => 'required',
             'commercial_register_number' => 'nullable|unique:providers',
-            'commercial_register_image' => 'required|image|mimes:jpeg,jpg,png,gif',
+            'commercial_register_image' => 'required|mimes:jpeg,jpg,png,gif',
             'minimum_charge' => 'nullable|numeric',
             'categories' => 'required',
         ];

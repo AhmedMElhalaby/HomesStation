@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
             'bank_name' => 'required',
             'owner_account' => 'required',
             'account_number' => 'required',
-            'logo_bank' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'logo_bank' => 'nullable|mimes:jpeg,jpg,png,gif',
         ];
     }
 }

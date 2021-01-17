@@ -28,7 +28,7 @@ class DelegateStore extends FormRequest
             'email' => 'nullable|email|unique:users',
             'mobile' => 'required|numeric|unique:users|min:10',
             'password' => 'required|min:6',
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'city_id' => 'required|exists:cities,id',
             'nationality_id' => 'nullable|exists:nationalities,id',
             'identity_number' => 'nullable|unique:users',

@@ -28,7 +28,7 @@ class CategoryStore extends FormRequest
             'name_en' => 'required',
             'type' => 'required',
             'is_deliverable' => 'boolean',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'image' => 'nullable|mimes:jpeg,jpg,png,gif',
         ];
     }
 }

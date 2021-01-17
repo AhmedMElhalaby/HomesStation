@@ -28,7 +28,7 @@ class UserUpdate extends FormRequest
             'email' => 'nullable|email|unique:users,email,' . $this->user,
             'mobile' => 'required|numeric|min:10|unique:users,mobile,' . $this->user,
             'password' => 'nullable|min:6',
-            'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|mimes:jpeg,jpg,png,gif',
             'city_id' => 'required|exists:cities,id',
         ];
     }
