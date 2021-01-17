@@ -164,7 +164,7 @@ class User extends Authenticatable implements JWTSubject
     public function setAvatarAttribute($value)
     {
         if (isset($this->attributes['avatar']) && $this->attributes['avatar'] != '') {
-            if (file_exists(storage_path('app/uploads/users/avatar/org' . "/" . $this->attributes['avatar']))) {
+            if (file_exists(public_path('app/uploads/users/avatar/org' . "/" . $this->attributes['avatar']))) {
                 ImageController::delete_image_from_folder($this->attributes['avatar'], 'app/uploads/users/avatar');
             }
         }
@@ -175,7 +175,7 @@ class User extends Authenticatable implements JWTSubject
     public function setLicenseImageAttribute($value)
     {
         if (isset($this->attributes['license_image']) && $this->attributes['license_image'] != '') {
-            if (file_exists(storage_path('app/uploads/users/license_image/org' . "/" . $this->attributes['license_image']))) {
+            if (file_exists(public_path('app/uploads/users/license_image/org' . "/" . $this->attributes['license_image']))) {
                 ImageController::delete_image_from_folder($this->attributes['license_image'], 'app/uploads/users/license_image');
             }
         }
@@ -202,7 +202,7 @@ class User extends Authenticatable implements JWTSubject
     public function getImage200Attribute()
     {
         if ($this->attributes['avatar'] != "") {
-            if (!file_exists(storage_path('app/uploads/users/avatar/200' . "/" . $this->attributes['avatar']))) {
+            if (!file_exists(public_path('app/uploads/users/avatar/200' . "/" . $this->attributes['avatar']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/users/avatar/200') . '/' . $this->attributes['avatar'];
@@ -214,7 +214,7 @@ class User extends Authenticatable implements JWTSubject
     public function getImage400Attribute()
     {
         if ($this->attributes['avatar'] != "") {
-            if (!file_exists(storage_path('app/uploads/users/avatar/400' . "/" . $this->attributes['avatar']))) {
+            if (!file_exists(public_path('app/uploads/users/avatar/400' . "/" . $this->attributes['avatar']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/users/avatar/400') . '/' . $this->attributes['avatar'];
@@ -226,7 +226,7 @@ class User extends Authenticatable implements JWTSubject
     public function getProfileImageAttribute()
     {
         if ($this->attributes['avatar'] != "") {
-            if (!file_exists(storage_path('app/uploads/users/avatar/600' . "/" . $this->attributes['avatar']))) {
+            if (!file_exists(public_path('app/uploads/users/avatar/600' . "/" . $this->attributes['avatar']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/users/avatar/600') . '/' . $this->attributes['avatar'];
@@ -238,7 +238,7 @@ class User extends Authenticatable implements JWTSubject
     public function getLicenseImageUrlAttribute()
     {
         if ($this->attributes['license_image'] != "") {
-            if (!file_exists(storage_path('app/uploads/users/license_image/600' . "/" . $this->attributes['license_image']))) {
+            if (!file_exists(public_path('app/uploads/users/license_image/600' . "/" . $this->attributes['license_image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/users/license_image/600') . '/' . $this->attributes['license_image'];

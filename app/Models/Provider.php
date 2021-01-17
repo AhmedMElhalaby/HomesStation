@@ -7,7 +7,7 @@ use App\Http\Controllers\General\ImageController;
 
 class Provider extends Model
 {
-    
+
     protected $table = 'providers';
 
     /**
@@ -55,18 +55,18 @@ class Provider extends Model
     public function setCommercialRegisterImageAttribute($value)
     {
         if (isset($this->attributes['commercial_register_image']) && $this->attributes['commercial_register_image'] != '') {
-            if (file_exists(storage_path('app/uploads/users/commercial_register_image/org' . "/" . $this->attributes['commercial_register_image']))) {
+            if (file_exists(public_path('app/uploads/users/commercial_register_image/org' . "/" . $this->attributes['commercial_register_image']))) {
                 ImageController::delete_image_from_folder($this->attributes['commercial_register_image'], 'app/uploads/users/commercial_register_image');
             }
         }
         $filename = ImageController::upload_single($value, 'app/uploads/users/commercial_register_image');
         $this->attributes['commercial_register_image'] = $filename;
-    }    
+    }
 
     public function getCommercialRegisterImage200Attribute()
     {
         if ($this->attributes['commercial_register_image'] != "") {
-            if (!file_exists(storage_path('app/uploads/users/commercial_register_image/200' . "/" . $this->attributes['commercial_register_image']))) {
+            if (!file_exists(public_path('app/uploads/users/commercial_register_image/200' . "/" . $this->attributes['commercial_register_image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/users/commercial_register_image/200') . '/' . $this->attributes['commercial_register_image'];
@@ -78,7 +78,7 @@ class Provider extends Model
     public function getCommercialRegisterImage400Attribute()
     {
         if ($this->attributes['commercial_register_image'] != "") {
-            if (!file_exists(storage_path('app/uploads/users/commercial_register_image/400' . "/" . $this->attributes['commercial_register_image']))) {
+            if (!file_exists(public_path('app/uploads/users/commercial_register_image/400' . "/" . $this->attributes['commercial_register_image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/users/commercial_register_image/400') . '/' . $this->attributes['commercial_register_image'];
@@ -90,7 +90,7 @@ class Provider extends Model
     public function getCommercialRegisterImage600Attribute()
     {
         if ($this->attributes['commercial_register_image'] != "") {
-            if (!file_exists(storage_path('app/uploads/users/commercial_register_image/600' . "/" . $this->attributes['commercial_register_image']))) {
+            if (!file_exists(public_path('app/uploads/users/commercial_register_image/600' . "/" . $this->attributes['commercial_register_image']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/users/commercial_register_image/600') . '/' . $this->attributes['commercial_register_image'];

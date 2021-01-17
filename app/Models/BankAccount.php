@@ -16,7 +16,7 @@ class BankAccount extends Model
     public function delete()
     {
         if (isset($this->attributes['logo_bank']) && $this->attributes['logo_bank'] != '') {
-            if (file_exists(storage_path('app/uploads/bank_account/org' . "/" . $this->attributes['logo_bank']))) {
+            if (file_exists(public_path('app/uploads/bank_account/org' . "/" . $this->attributes['logo_bank']))) {
                 ImageController::delete_image_from_folder($this->attributes['logo_bank'], 'app/uploads/bank_account');
             }
         }
@@ -26,7 +26,7 @@ class BankAccount extends Model
     public function setLogoBankAttribute($value)
     {
         if (isset($this->attributes['logo_bank']) && $this->attributes['logo_bank'] != '') {
-            if (file_exists(storage_path('app/uploads/bank_account/org' . "/" . $this->attributes['logo_bank']))) {
+            if (file_exists(public_path('app/uploads/bank_account/org' . "/" . $this->attributes['logo_bank']))) {
                 ImageController::delete_image_from_folder($this->attributes['logo_bank'], 'app/uploads/bank_account');
             }
         }
@@ -37,7 +37,7 @@ class BankAccount extends Model
     public function getLogoBank200Attribute()
     {
         if ($this->attributes['logo_bank'] != "") {
-            if (!file_exists(storage_path('app/uploads/bank_account/200' . "/" . $this->attributes['logo_bank']))) {
+            if (!file_exists(public_path('app/uploads/bank_account/200' . "/" . $this->attributes['logo_bank']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/bank_account/200') . '/' . $this->attributes['logo_bank'];
@@ -49,7 +49,7 @@ class BankAccount extends Model
     public function getLogoBank400Attribute()
     {
         if ($this->attributes['logo_bank'] != "") {
-            if (!file_exists(storage_path('app/uploads/bank_account/400' . "/" . $this->attributes['logo_bank']))) {
+            if (!file_exists(public_path('app/uploads/bank_account/400' . "/" . $this->attributes['logo_bank']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/bank_account/400') . '/' . $this->attributes['logo_bank'];
@@ -61,7 +61,7 @@ class BankAccount extends Model
     public function getLogoBank600Attribute()
     {
         if ($this->attributes['logo_bank'] != "") {
-            if (!file_exists(storage_path('app/uploads/bank_account/600' . "/" . $this->attributes['logo_bank']))) {
+            if (!file_exists(public_path('app/uploads/bank_account/600' . "/" . $this->attributes['logo_bank']))) {
                 return asset('storage/app/uploads/default.png');
             }
             return asset('storage/app/uploads/bank_account/600') . '/' . $this->attributes['logo_bank'];
