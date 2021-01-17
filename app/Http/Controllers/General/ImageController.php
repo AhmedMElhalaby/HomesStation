@@ -101,9 +101,18 @@ class ImageController extends Controller
 
     public static function delete_image_from_folder($image_name, $path)
     {
-        unlink(public_path($path . '/org' . "/" . $image_name));
-        unlink(public_path($path . '/200' . "/" . $image_name));
-        unlink(public_path($path . '/400' . "/" . $image_name));
-        unlink(public_path($path . '/600' . "/" . $image_name));
+        if(!File::exists(public_path($path . '/org' . "/" . $image_name ))){
+            unlink(public_path($path . '/org' . "/" . $image_name));
+        }
+        if(!File::exists(public_path($path . '/200' . "/" . $image_name ))){
+            unlink(public_path($path . '/200' . "/" . $image_name));
+        }
+        if(!File::exists(public_path($path . '/400' . "/" . $image_name ))){
+            unlink(public_path($path . '/400' . "/" . $image_name));
+        }
+        if(!File::exists(public_path($path . '/600' . "/" . $image_name ))){
+            unlink(public_path($path . '/600' . "/" . $image_name));
+        }
+
     }
 }
