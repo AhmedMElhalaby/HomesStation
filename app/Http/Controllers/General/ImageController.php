@@ -102,6 +102,7 @@ class ImageController extends Controller
 
     public static function delete_image_from_folder($image_name, $path)
     {
+        $path = 'storage/'.$path;
         if(File::exists(public_path($path . '/org' . "/" . $image_name ))){
             unlink(public_path($path . '/org' . "/" . $image_name));
         }
