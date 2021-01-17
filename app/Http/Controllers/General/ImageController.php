@@ -5,11 +5,26 @@ namespace App\Http\Controllers\General;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\File;
+
 
 class ImageController extends Controller
 {
     public static function upload_single($request_file, $path,$type=1,$text=null)
     {
+
+        if(!File::exists(storage_path($path . '/org' . "/" ))){
+            File::makeDirectory(storage_path($path . '/org' . "/" ));
+        }
+        if(!File::exists(storage_path($path . '/200' . "/" ))){
+            File::makeDirectory(storage_path($path . '/200' . "/" ));
+        }
+        if(!File::exists(storage_path($path . '/400' . "/" ))){
+            File::makeDirectory(storage_path($path . '/400' . "/" ));
+        }
+        if(!File::exists(storage_path($path . '/600' . "/" ))){
+            File::makeDirectory(storage_path($path . '/600' . "/" ));
+        }
         $name = generate_code() . '_' . time() . '.' . $request_file->getClientOriginalExtension();
         if($type == 1){
             Image::make($request_file)->save(storage_path($path . '/org' . "/" . $name));
