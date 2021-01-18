@@ -28,7 +28,7 @@ class ProviderController extends MasterController
     {
         $providers = User::where('type', 'provider')->latest();
         if($request->filled('active')){
-            $providers = $providers->where('active',$this->active);
+            $providers = $providers->where('active',$request->active);
         }
         $providers = $providers->get();
         $this->data['providers'] = $providers;

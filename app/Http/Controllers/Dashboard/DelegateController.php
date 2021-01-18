@@ -24,7 +24,7 @@ class DelegateController extends Controller
     {
         $delegates = User::where('type', 'delegate')->latest();
         if($request->filled('active')){
-            $delegates = $delegates->where('active',$this->active);
+            $delegates = $delegates->where('active',$request->active);
         }
         $delegates = $delegates->get();
         $this->data['delegates'] = $delegates;
