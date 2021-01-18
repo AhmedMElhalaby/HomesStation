@@ -24,9 +24,14 @@ class ProviderController extends MasterController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $this->data['providers'] = User::where('type', 'provider')->latest()->get();
+        $providers = User::where('type', 'provider')->latest();
+        if($request->filled('active')){
+            $providers = $providers->where('active',$this->active);
+        }
+        $providers = $providers->get();
+        $this->data['providers'] = $providers;
         return view('dashboard.provider.index', $this->data);
     }
 
@@ -185,14 +190,14 @@ class ProviderController extends MasterController
         }
         $provider = User::where('type', 'provider')->find($request->provider_id);
         $provider->update(['expire_date' => date('Y-m-d H:i:s', strtotime($request->expire_date))]);
-        
+
         $title_ar = 'قامت إدارة تطبيق هومز استشين بإرسال إشعار';
         $title_en = 'homes station management has sent notice to you';
         $title = app()->getLocale() == 'ar' ? $title_ar : $title_en;
         $body_ar = 'تم تجديد الاشتراك حتى ' . date('Y-m-d', strtotime($request->expire_date));
         $body_en = 'Subscription renewed up to ' . date('Y-m-d', strtotime($request->expire_date));
         $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
-        
+
         $fcm_data = [];
         $fcm_data['title'] = $title;
         $fcm_data['key'] = 'management_message';

@@ -20,9 +20,14 @@ class DelegateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $this->data['delegates'] = User::where('type', 'delegate')->latest()->get();
+        $delegates = User::where('type', 'delegate')->latest();
+        if($request->filled('active')){
+            $delegates = $delegates->where('active',$this->active);
+        }
+        $delegates = $delegates->get();
+        $this->data['delegates'] = $delegates;
         return view('dashboard.delegate.index', $this->data);
     }
 
@@ -129,14 +134,14 @@ class DelegateController extends Controller
         }
         $delegate = User::where('type', 'delegate')->find($request->delegate_id);
         $delegate->update(['expire_date' => date('Y-m-d H:i:s', strtotime($request->expire_date))]);
-        
+
         $title_ar = 'قامت إدارة تطبيق هومز استشين بإرسال إشعار';
         $title_en = 'homes station management has sent notice to you';
         $title = app()->getLocale() == 'ar' ? $title_ar : $title_en;
         $body_ar = 'تم تجديد الاشتراك حتى ' . date('Y-m-d', strtotime($request->expire_date));
         $body_en = 'Subscription renewed up to ' . date('Y-m-d', strtotime($request->expire_date));
         $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
-        
+
         $fcm_data = [];
         $fcm_data['title'] = $title;
         $fcm_data['key'] = 'management_message';
@@ -150,7 +155,7 @@ class DelegateController extends Controller
         if (Device::where('user_id', $request->delegate_id)->exists()) {
             NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($request->delegate_id, $title, $body, $fcm_data, (60 * 20));
         }
-        
+
         return redirect()->route('delegate.show', $request->delegate_id)->with('class', 'alert alert-success')->with('message', trans('dash.updated_successfully'));
     }
 }
