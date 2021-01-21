@@ -38,14 +38,14 @@ class ImageController extends Controller
             })->save(public_path($path . '/600' . "/" . $name));
         }else{
 //            Original Image
-            $watermark = Image::make(public_path('logo.png'))->resize(150,null,function ($c){
+            $watermark = Image::make(public_path('logo.png'))->resize(50,null,function ($c){
                 $c->aspectRatio();
             });
             $img = Image::make($request_file);
-            $img->insert($watermark,'bottom-right',10,10);
-            $img->text(''.$text, ($img->width()-90), ($img->height()-5), function($font) {
+            $img->insert($watermark,'bottom-right',10,15);
+            $img->text(''.$text, ($img->width()-35), ($img->height()-5), function($font) {
                 $font->file(base_path('public/fonts/CairoRegular.ttf'));
-                $font->size(20);
+                $font->size(8);
                 $font->color('#ffffff');
                 $font->align('center');
             });
@@ -69,31 +69,31 @@ class ImageController extends Controller
             $img400 = Image::make($request_file)->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $watermark = Image::make(public_path('logo.png'))->resize(100,null,function ($c){
+            $watermark = Image::make(public_path('logo.png'))->resize(50,null,function ($c){
                 $c->aspectRatio();
             });
-            $img400->text(''.$text, ($img400->width()-70), ($img400->height()-5), function($font) {
+            $img400->text(''.$text, ($img400->width()-35), ($img400->height()-5), function($font) {
                 $font->file(base_path('public/fonts/CairoRegular.ttf'));
-                $font->size(15);
+                $font->size(8);
                 $font->color('#ffffff');
                 $font->align('center');
             });
-            $img400->insert($watermark,'bottom-right',10,25);
+            $img400->insert($watermark,'bottom-right',10,15);
             $img400->save(public_path($path . '/400' . "/" . $name));
 //            600 Image
             $img600 = Image::make($request_file)->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $watermark = Image::make(public_path('logo.png'))->resize(150,null,function ($c){
+            $watermark = Image::make(public_path('logo.png'))->resize(50,null,function ($c){
                 $c->aspectRatio();
             });
-            $img600->text(''.$text, ($img600->width()-90), ($img600->height()-5), function($font) {
+            $img600->text(''.$text, ($img600->width()-35), ($img600->height()-5), function($font) {
                 $font->file(base_path('public/fonts/CairoRegular.ttf'));
-                $font->size(20);
+                $font->size(8);
                 $font->color('#ffffff');
                 $font->align('center');
             });
-            $img600->insert($watermark,'bottom-right',10,30);
+            $img600->insert($watermark,'bottom-right',10,15);
             $img600->save(public_path($path . '/600' . "/" . $name));
         }
         return $name;
