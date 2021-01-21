@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th class="text-center"> # </th>
-                <th class="text-center"> {{ trans('dash.order') }} </th>
+                <th class="text-center"> {{ trans('dash.order_number') }} </th>
                 <th class="text-center"> {{ trans('dash.client_name') }} </th>
                 <th class="text-center"> {{ trans('dash.provider_name') }} </th>
                 <th class="text-center"> {{ trans('dash.order_price') }} </th>
