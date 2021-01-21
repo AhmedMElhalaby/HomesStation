@@ -46,7 +46,7 @@ class UserOrderController extends MasterController
             $order = Order::create([
                 'user_id' => $user->id,
                 'provider_id' => $provider->id,
-                'delivery_price' => 0,
+                'delivery_price' => (double)settings('delivery_price'),
                 'order_status' => 'products_client_waiting',
                 'app_precentage_from_provider' => settings('app_precentage_from_provider'),
                 'lat' => $request->lat,

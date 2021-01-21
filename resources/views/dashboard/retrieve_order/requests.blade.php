@@ -9,12 +9,13 @@
 @section('content')
 <div class="panel panel-flat tb_padd">
     <div class="panel-heading">
-        <h5 class="panel-title"> {{ trans('dash.retrieve_orders') }} : {{ trans('dash.retrieve_order_requests') }} </h5>        
+        <h5 class="panel-title"> {{ trans('dash.retrieve_orders') }} : {{ trans('dash.retrieve_order_requests') }} </h5>
     </div>
     <table class="table table-condensed table-hover datatable-highlight">
         <thead>
             <tr>
                 <th class="text-center"> # </th>
+                <th class="text-center"> {{ trans('dash.order') }} </th>
                 <th class="text-center"> {{ trans('dash.client_name') }} </th>
                 <th class="text-center"> {{ trans('dash.provider_name') }} </th>
                 <th class="text-center"> {{ trans('dash.order_price') }} </th>
@@ -28,16 +29,17 @@
             <?php $count = 1;?>
             @forelse($orders as $order)
             <tr id="row_{{ $order->id }}">
-                <td class="text-center"> {{ $count }} </td>                
+                <td class="text-center"> {{ $count }} </td>
+                <td class="text-center"> <a href="{{url('dashboard/order/'.$order->id.'/show')}}">{{ $order->id }}</a> </td>
                 <td class="text-center"> {{ $order->User->username }} </td>
                 <td class="text-center"> {{ $order->Provider->username }} </td>
                 <td class="text-center"> {{ $order->total_order_price }} </td>
                 <td class="text-center"> {{ $order->delivery_price }} </td>
                 <td class="text-center">
-                    <span class="label bg-success-400">{{ order_status($order->order_status) }}</span>                    
+                    <span class="label bg-success-400">{{ order_status($order->order_status) }}</span>
                 </td>
                 <td class="text-center"> {{ $order->created_at->diffforhumans() }} </td>
-                <td class="text-center">                    
+                <td class="text-center">
                     <a data-popup="tooltip" title="{{ trans('dash.edit_data') }}" onclick="sweet_delete( '{{ route('retrieve_order.reply') }}', {{ $order->id }}, 'accept' )" class="btn btn-primary"><i class="icon-checkmark3"></i></a>
                     <a data-popup="tooltip" title="{{ trans('dash.edit_data') }}"  onclick="sweet_delete( '{{ route('retrieve_order.reply') }}', {{ $order->id }}, 'reject' )" class="btn btn-danger"><i class="icon-cross2"></i></a>
                 </td>
@@ -92,7 +94,7 @@
                     $('.follow').css("display", "none");
                     $('.following').css("display", "inline");
                 }
-            }   
+            }
         });
     });  --}}
 </script>
