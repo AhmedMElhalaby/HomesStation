@@ -61,13 +61,27 @@ class SearchController extends MasterController
 
     public function search_provider(Request $request)
     {
-        if (!$request->subcategory_id || !$request->subcategory_tag_id)
+        if (!$request->subcategory_id && !$request->subcategory_tag_id)
             return response()->json(['status' => 'false', 'message' => trans('app.sub_cat_id_and_txt_required'), 'data' => null], 422);
         $providers = User::where('type', 'provider')->active()->subscribed()->whereHas('ProviderData', function ($q) {
             $q->available();
-        })->whereHas('Services', function ($query) use ($request) {
-            $query->where(['subcategory_id' => $request->subcategory_id, 'subcategory_tag_id' => $request->subcategory_tag_id]);
-        })->get();
+        });
+
+        if($request->filled('subcategory_id') && ! $request->filled('subcategory_tag_id')){
+            $providers = $providers->whereHas('Services', function ($query) use ($request) {
+                $query->where(['subcategory_id' => $request->subcategory_id]);
+            })->get();
+        }
+        if(! $request->filled('subcategory_id') && $request->filled('subcategory_tag_id')){
+            $providers = $providers->whereHas('Services', function ($query) use ($request) {
+                $query->where(['subcategory_tag_id' => $request->subcategory_tag_id]);
+            })->get();
+        }
+        if($request->filled('subcategory_id') && $request->filled('subcategory_tag_id')){
+            $providers = $providers->whereHas('Services', function ($query) use ($request) {
+                $query->where(['subcategory_id' => $request->subcategory_id, 'subcategory_tag_id' => $request->subcategory_tag_id]);
+            })->get();
+        }
         return response(['status' => 'true', 'message' => '', 'data' => MiniProviderResource::collection($providers)], 200);
     }
 
