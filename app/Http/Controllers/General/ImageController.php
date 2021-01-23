@@ -12,6 +12,7 @@ class ImageController extends Controller
 {
     public static function upload_single($request_file, $path,$type=1,$text=null)
     {
+        $path = 'storage/'.$path;
         if(!File::exists(public_path($path . '/org' ))){
             File::makeDirectory(public_path($path . '/org' ),0777,true);
         }
