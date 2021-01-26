@@ -63,7 +63,9 @@ class SearchController extends MasterController
     {
         if (!$request->subcategory_id && !$request->subcategory_tag_id)
             return response()->json(['status' => 'false', 'message' => trans('app.sub_cat_id_and_txt_required'), 'data' => null], 422);
-        $providers = User::where('type', 'provider')->active()->subscribed();
+        $providers = User::where('type', 'provider')->active()->subscribed()->whereHas('ProviderData', function ($q) {
+            $q->available();
+        });
 
         if($request->filled('subcategory_id') && ! $request->filled('subcategory_tag_id')){
             $providers = $providers->whereHas('Services', function ($query) use ($request) {
