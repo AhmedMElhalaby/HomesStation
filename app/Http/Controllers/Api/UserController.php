@@ -69,32 +69,30 @@ class UserController extends MasterController
         }
     }
 
-    /** 
-     * Register api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * Register api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function register(RegisterUserRequest $request)
     {
-        $user = User::create($request->validated() + ['role_id' => 1, 'active' => 'deactive', 'type' => 'user', 'code' => generate_code()]);        
+        $user = User::create($request->validated() + ['role_id' => 1, 'active' => 'deactive', 'type' => 'user', 'code' => generate_code()]);
         if (request('device_id') && request('device_type')) {
             $device = Device::updateOrCreate(['user_id' => $user->id, 'device_type' => request('device_type')], ['device_id' => request('device_id')]);
         }
         if (request('social_type') && request('social_id')) {
             UserSocial::create(['user_id' => $user->id, 'social_type' => request('social_type'), 'social_id' => request('social_id')]);
         }
-        
+        $token = JWTAuth::fromUser($user);
         $code_message = 'كود%20التفعيل%20:%20' . $user->code;
         (new SmsController())->send_sms($user->mobile, $code_message);
-        
-        $token = JWTAuth::fromUser($user);
         return response()->json(['status' => 'true', 'message' => trans('auth.success_register'), 'data' => ['token_type' => 'Bearer', 'access_token' => $token], 'code' => $user->code], 200);
     }
 
-    /** 
-     * show user data api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * show user data api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $user_id = null)
     {
@@ -153,10 +151,10 @@ class UserController extends MasterController
         $user = User::where(['mobile' => $mobile, 'type' => 'user'])->first();
         if ($user) {
             $user->update(['code' => generate_code()]);
-            
+
             $code_message = 'كود%20التفعيل%20:%20' . $user->code;
             (new SmsController())->send_sms($user->mobile, $code_message);
-            
+
             return response()->json(['status' => 'true', 'message' => trans('app.sent_successfully'), 'data' => ['token_type' => 'Bearer', 'access_token' => JWTAuth::fromUser($user)], 'code' => $user->code], 200);
         } else {
             return response()->json(['status' => 'false', 'message' => trans('app.user_not_found'), 'data' => null], 401);
@@ -171,7 +169,7 @@ class UserController extends MasterController
         $mobile = filter_mobile_number($request->user()->mobile);
         $user = User::where(['mobile' => $mobile, 'code' => $request->code, 'type' => 'user'])->first();
         if ($user) {
-            $user->update(['code' => '', 'active' => 'active']);            
+            $user->update(['code' => '', 'active' => 'active']);
             return response()->json(['status' => 'true', 'message' => '', 'data' => ['token_type' => 'Bearer', 'access_token' => JWTAuth::fromUser($user)]], 200);
         } else {
             return response()->json(['status' => 'false', 'message' => trans('app.wrong_code'), 'data' => null], 401);
