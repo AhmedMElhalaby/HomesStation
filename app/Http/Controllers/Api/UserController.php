@@ -57,7 +57,7 @@ class UserController extends MasterController
         if (Auth::attempt(['mobile' => filter_mobile_number(request('mobile')), 'password' => request('password'), 'type' => 'user'])) {
             $user = Auth::user();
             if ($user->active != 'active')
-                return response()->json(['status' => 'false', 'message' => trans('auth.deactivation_message'), 'data' => ['token' => $user->token]], 403);
+                return response()->json(['status' => 'false', 'message' => trans('auth.deactivation_message'), 'data' => ['token_type' => 'Bearer', 'access_token' => JWTAuth::fromUser($user)]], 403);
             if ($user->banned != '0')
                 return response()->json(['status' => 'false', 'message' => trans('auth.banned_message'), 'data' => null], 401);
             if (request('device_id') && request('device_type')) {
