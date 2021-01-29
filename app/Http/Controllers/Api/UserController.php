@@ -54,7 +54,7 @@ class UserController extends MasterController
 
     public function login()
     {
-        if (JWTAuth::attempt(['mobile' => filter_mobile_number(request('mobile')), 'password' => request('password'), 'type' => 'user'])) {
+        if (Auth::attempt(['mobile' => filter_mobile_number(request('mobile')), 'password' => request('password'), 'type' => 'user'])) {
             $user = Auth::user();
             if ($user->active != 'active')
                 return response()->json(['status' => 'false', 'message' => trans('auth.deactivation_message'), 'data' => ['token' => $user->token]], 403);
@@ -83,9 +83,9 @@ class UserController extends MasterController
         if (request('social_type') && request('social_id')) {
             UserSocial::create(['user_id' => $user->id, 'social_type' => request('social_type'), 'social_id' => request('social_id')]);
         }
-        $token = JWTAuth::fromUser($user);
         $code_message = 'كود%20التفعيل%20:%20' . $user->code;
         (new SmsController())->send_sms($user->mobile, $code_message);
+        $token = JWTAuth::fromUser($user);
         return response()->json(['status' => 'true', 'message' => trans('auth.success_register'), 'data' => ['token_type' => 'Bearer', 'access_token' => $token], 'code' => $user->code], 200);
     }
 
