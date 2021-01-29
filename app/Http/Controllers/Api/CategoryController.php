@@ -32,6 +32,8 @@ class CategoryController extends MasterController
         }
         $providers = User::active()->subscribed()->whereHas('Categories', function ($query) use ($category_id) {
             $query->where('category_id', $category_id);
+        })->whereHas('ProviderData', function ($q) {
+            $q->available();
         })->get();
         return response(['status' => 'true', 'message' => '', 'data' => MiniProviderResource::collection($providers)], 200);
     }
