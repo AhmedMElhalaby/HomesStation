@@ -189,7 +189,7 @@ class ProviderController extends MasterController
             return redirect()->route('provider.index')->with('class', 'alert alert-danger')->with('message', trans('dash.try_2_access_not_found_content'));
         }
         $provider = User::where('type', 'provider')->find($request->provider_id);
-        $provider->update(['expire_date' => date('Y-m-d H:i:s', strtotime($request->expire_date))]);
+        $provider->update(['expiration_notification'=>0,'expire_date' => date('Y-m-d H:i:s', strtotime($request->expire_date))]);
 
         $title_ar = 'قامت إدارة تطبيق هومز استشين بإرسال إشعار';
         $title_en = 'homes station management has sent notice to you';
