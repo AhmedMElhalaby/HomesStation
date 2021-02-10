@@ -42,7 +42,7 @@ class SubscriptionNotification extends Command
      */
     public function handle()
     {
-        $Users = User::where('expiration_notification',false)->where('expire_at','<=',Carbon::today()->addDays(7))->get();
+        $Users = User::where('expiration_notification',false)->where('expire_date','<=',Carbon::today()->addDays(7))->get();
         foreach ($Users as $user){
             $fcm_data = [];
             $title = app()->getLocale() == 'ar' ? 'تذكير الاشتراك' : 'Subscription reminder';
