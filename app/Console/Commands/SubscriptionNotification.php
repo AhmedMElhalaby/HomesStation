@@ -53,6 +53,8 @@ class SubscriptionNotification extends Command
             if (Device::where('user_id', $user->id)->exists()) {
                 NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($user->id,$title, $body, $fcm_data, (60 * 20));
             }
+
+            add_notification($user->id, 'management_message', 0, 'اشتراكك على وشك الانتهاء', 'Your Subscription is about to Expire');
             $user->expiration_notification = true;
             $user->save();
         }
