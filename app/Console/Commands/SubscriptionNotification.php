@@ -44,17 +44,23 @@ class SubscriptionNotification extends Command
     {
         $Users = User::where('expiration_notification',false)->where('expire_date','<=',Carbon::today()->addDays(7))->get();
         foreach ($Users as $user){
+            $title_ar = 'تذكير الاشتراك';
+            $title_en = 'Subscription reminder';
+            $title = app()->getLocale() == 'ar' ? $title_ar : $title_en;
+            $body_ar = 'اشتراكك على وشك الانتهاء';
+            $body_en = 'Your Subscription is about to Expire';
+            $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
             $fcm_data = [];
-            $title = app()->getLocale() == 'ar' ? 'تذكير الاشتراك' : 'Subscription reminder';
-            $body = app()->getLocale() == 'ar' ? 'اشتراكك على وشك الانتهاء' : 'Your Subscription is about to Expire';
             $fcm_data['title'] = $title;
-            $fcm_data['key'] = 'new_order';
+            $fcm_data['key'] = 'management_message';
             $fcm_data['body'] = $body;
+            $fcm_data['msg_sender'] = 'HomesStation';
+            $fcm_data['sender_logo'] = asset('storage/app/uploads/default.png');
+            $fcm_data['time'] = date('Y-m-d H:i:s');
+            add_notification($user->id, 'management_message', 0, $body_ar, $body_en);
             if (Device::where('user_id', $user->id)->exists()) {
                 NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($user->id,$title, $body, $fcm_data, (60 * 20));
             }
-
-            add_notification($user->id, 'management_message', 0, 'اشتراكك على وشك الانتهاء', 'Your Subscription is about to Expire');
             $user->expiration_notification = true;
             $user->save();
         }
