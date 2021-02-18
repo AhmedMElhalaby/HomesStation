@@ -2,6 +2,7 @@
 
 Route::get('/', 'Website\HomeController@index')->name('website.home');
 Route::get('privacy', 'Website\SettingController@privacy')->name('website.settings.privacy');
+Route::get('contact', 'Website\SettingController@contact')->name('website.settings.contact');
 Route::get('terms', 'Website\SettingController@terms')->name('website.settings.terms');
 
 

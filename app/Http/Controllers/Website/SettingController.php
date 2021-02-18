@@ -12,6 +12,10 @@ class SettingController extends Controller
         return view('website.privacy');
     }
 
+    public function contact()
+    {
+        return view('website.contact');
+    }
     public function terms()
     {
         return view('website.terms');
