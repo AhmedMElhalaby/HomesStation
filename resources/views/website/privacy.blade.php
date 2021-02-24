@@ -89,6 +89,9 @@
                         <a class="nav-link" href="{{ route('website.settings.terms') }}">اتفاقية الاستخدام</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('website.settings.contact') }}">تواصل معنا</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('website.home') }}">تحميل</a>
                     </li>
                 </ul>

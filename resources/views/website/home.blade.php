@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  
+
   <meta name="author" content="ahmed essam">
   <meta name="description" content="description content">
   <meta name="keywords" content="content">
@@ -86,6 +86,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('website.settings.terms') }}">اتفاقية الاستخدام</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('website.settings.contact') }}">تواصل معنا</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#download">تحميل</a>

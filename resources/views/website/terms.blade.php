@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+
     <meta name="author" content="ahmed essam">
     <meta name="description" content="description content">
     <meta name="keywords" content="content">
@@ -86,6 +86,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('website.settings.terms') }}">اتفاقية الاستخدام</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('website.settings.contact') }}">تواصل معنا</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('website.home') }}">تحميل</a>
@@ -213,7 +216,7 @@
                 <p>• يحق لك إلغاء\استرجاع الطلب من خلال تواصلك مع المعلن في تطبيقنا.</p>
                 <p>• وعند قبول طلبك، فإن ذلك يمثل اتفاق بينك (كعميل) وبين متجر الأسرة (كبائع)، وتقع على المتجر وحده المسؤولية
                     عن هذا الطلب. ويتم الدفع النقدي مباشرةً الى المتجر الذي يقوم بتلبية الطلب.</p>
-                <p>• لا يتم استرجاع المبالغ المدفوعة الكترونيا للاعلانات والاشتراكات داخل التطبيق. </p>               
+                <p>• لا يتم استرجاع المبالغ المدفوعة الكترونيا للاعلانات والاشتراكات داخل التطبيق. </p>
                 <br />
 
                 <h4 class="sub-title">الأضرار التي يتعرض لها المستخدم: </h4>
