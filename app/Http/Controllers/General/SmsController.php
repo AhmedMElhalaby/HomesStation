@@ -16,7 +16,7 @@ class SmsController extends Controller
         // $this->username = '20092157';
         // $this->sender_name = 'HStation';
         // $this->password = 'gpkxk4';
-        
+
         $this->username = '20093502';
         $this->sender_name = 'HStation';
         $this->password = '@Naif0503103307';
@@ -26,10 +26,10 @@ class SmsController extends Controller
     {
         $date = date('Y-m-d');
         $time = date("H:i");
-        $url = "http://mshastra.com/sendurlcomma.aspx?user=" . $this->username . "&pwd=" . $this->password . "&senderid=" . $this->sender_name . "&mobileno=" . $numbers . "&msgtext=" . $message . "&priority=High&CountryCode=all";
+        $url = "http://mshastra.com/sendurlcomma.aspx?user=" . $this->username . "&pwd=" . $this->password . "&senderid=" . $this->sender_name . "&mobileno=" . $numbers . "&msgtext=" . $message . "&priority=High&CountryCode=966";
         // dd($url);
         // $request_code = (integer)file_get_contents($url);
-        
+
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $curl_scraped_page = curl_exec($ch);
