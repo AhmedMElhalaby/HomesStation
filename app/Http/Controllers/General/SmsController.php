@@ -18,7 +18,7 @@ class SmsController extends Controller
         // $this->password = 'gpkxk4';
 
         $this->username = '20093502';
-        $this->sender_name = 'HStation';
+        $this->sender_name = 'Hstation';
         $this->password = '@Naif0503103307';
     }
 
