@@ -19,7 +19,7 @@ class SmsController extends Controller
 
         $this->username = '20093502';
         $this->sender_name = 'Hstation';
-        $this->password = '@Naif0503103307';
+        $this->password = 'hstation@307';
     }
 
     public function send_sms($numbers, $message)
