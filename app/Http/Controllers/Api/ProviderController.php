@@ -41,7 +41,7 @@ class ProviderController extends MasterController
             $this->middleware('jwt.auth');
         }
     }
-    
+
     public function login()
     {
         if (Auth::attempt(['mobile' => filter_mobile_number(request('mobile')), 'password' => request('password'), 'type' => 'provider'])) {
@@ -59,10 +59,10 @@ class ProviderController extends MasterController
         }
     }
 
-    /** 
-     * Register api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * Register api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function register(RegisterProviderRequest $request)
     {
@@ -75,22 +75,22 @@ class ProviderController extends MasterController
             if (request('device_id') && request('device_type')) {
                 $device = Device::updateOrCreate(['user_id' => $provider->id, 'device_type' => request('device_type')], ['device_id' => request('device_id')]);
             }
-            
+
             $code_message = 'كود%20التفعيل%20:%20' . $provider->code;
             (new SmsController())->send_sms($provider->mobile, $code_message);
-            
+
             if (settings('free_trial_availability') == 'available') {
                 $expire_date = calc_expire_date(settings('free_trial_period_type'), settings('free_trial_period'));
                 $provider->update([
                     'expire_date' => $expire_date,
                 ]);
 
-                $title_ar = 'قامت إدارة تطبيق هوم استشين بإرسال إشعار';
-                $title_en = 'home station management has sent notice to you';
+                $title_ar = 'قامت إدارة تطبيق هومز استشين بإرسال إشعار';
+                $title_en = 'homes station management has sent notice to you';
                 $title = app()->getLocale() == 'ar' ? $title_ar : $title_en;
 
-                $body_ar = 'مرحبا بك في تطبيق هوم استيشن انت الان في فترة تجربه مجانيه حتى تاريخ ' . $expire_date;
-                $body_en = 'Welcome to the application of Home Station you are now in a free trial to date ' . $expire_date;
+                $body_ar = 'مرحبا بك في تطبيق هومز استيشن انت الان في فترة تجربه مجانيه حتى تاريخ ' . $expire_date;
+                $body_en = 'Welcome to the application of Homes Station you are now in a free trial to date ' . $expire_date;
                 $body = app()->getLocale() == 'ar' ? $body_ar : $body_en;
 
                 $fcm_data = [];
@@ -116,10 +116,10 @@ class ProviderController extends MasterController
         return response()->json(['status' => 'true', 'message' => trans('auth.success_register'), 'data' => ['token_type' => 'Bearer', 'access_token' => $token], 'code' => $provider->code], 200);
     }
 
-    /** 
-     * show user data api 
-     * 
-     * @return \Illuminate\Http\Response 
+    /**
+     * show user data api
+     *
+     * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $provider_id = null)
     {
@@ -206,10 +206,10 @@ class ProviderController extends MasterController
         $provider = User::where(['mobile' => $mobile, 'type' => 'provider'])->first();
         if ($provider) {
             $provider->update(['code' => generate_code()]);
-            
+
             $code_message = 'كود%20التفعيل%20:%20' . $provider->code;
             (new SmsController())->send_sms($provider->mobile, $code_message);
-            
+
             return response()->json(['status' => 'true', 'message' => trans('app.sent_successfully'), 'data' => ['token_type' => 'Bearer', 'access_token' => JWTAuth::fromUser($provider)], 'code' => $provider->code], 200);
         } else {
             return response()->json(['status' => 'false', 'message' => trans('app.provider_not_found'), 'data' => null], 401);
@@ -224,7 +224,7 @@ class ProviderController extends MasterController
         $mobile = filter_mobile_number($request->user()->mobile);
         $provider = User::where(['mobile' => $mobile, 'code' => $request->code, 'type' => 'provider'])->first();
         if ($provider) {
-            $provider->update(['code' => '', 'active' => 'active']);            
+            $provider->update(['code' => '', 'active' => 'active']);
             return response()->json(['status' => 'true', 'message' => '', 'data' => ['token_type' => 'Bearer', 'access_token' => JWTAuth::fromUser($provider)]], 200);
         } else {
             return response()->json(['status' => 'false', 'message' => trans('app.wrong_code'), 'data' => null], 401);
@@ -285,7 +285,7 @@ class ProviderController extends MasterController
             return response()->json(['status' => 'false', 'message' => trans('auth.deactivated_account'), 'data' => null], 403);
         if ($provider->banned != '0')
             return response()->json(['status' => 'false', 'message' => trans('auth.banned_account'), 'data' => null], 401);
-        
+
         if($request->subcategory_tag_id){
             $services = $provider->Services()->where('subcategory_tag_id', $request->subcategory_tag_id)->get();
         }else{
@@ -326,7 +326,7 @@ class ProviderController extends MasterController
     }
 
     public function send_report(Request $request, $provider_id = null)
-    {        
+    {
         if ($request->reason == null)
             return response()->json(['status' => 'false', 'message' => trans('app.reason_required'), 'data' => null], 401);
         if ($provider_id == null)
@@ -369,7 +369,7 @@ class ProviderController extends MasterController
         })->get();
         return response(['status' => 'true', 'message' => '', 'data' => SubcategoryTagResource::collection($provider_tags)], 200);
     }
-    
+
     public function my_subcategories($provider_id = null, $category_id = null)
     {
         if ($category_id == null) {

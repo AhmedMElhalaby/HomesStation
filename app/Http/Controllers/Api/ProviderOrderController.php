@@ -238,10 +238,10 @@ class ProviderOrderController extends MasterController
                 $fcm_data['sender_logo'] = $request->user()->profile_image;
                 $fcm_data['order_id'] = $order->id;
                 $fcm_data['time'] = $order->updated_at->diffforhumans();
-
-                if (Device::where('user_id', $delegate->id)->exists()) {
-                    NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($delegate->id, $title, $body, $fcm_data, (60 * 20));
-                }
+//
+//                if (Device::where('user_id', $delegate->id)->exists()) {
+//                    NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($delegate->id, $title, $body, $fcm_data, (60 * 20));
+//                }
             }
                 // =========================== Notification ===========================
 
