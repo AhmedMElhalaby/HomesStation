@@ -218,7 +218,7 @@ class ProviderOrderController extends MasterController
             }
             // =========================== is_deliverable ===========================
             if ($order->is_deliverable && $order->has_provider_delegate == 'no') {
-                $delegate = User::where(['type' => 'delegate'])->active()->subscribed()->nearest($provider->lat, $provider->lng, settings('num_of_search_km_for_provider'))->first();
+                $delegate = User::where('type' , 'delegate')->active()->subscribed()->nearest($provider->lat, $provider->lng, settings('num_of_search_km_for_provider'))->first();
                 $OrderDelegateNotification = new OrderDelegateNotification();
                 $OrderDelegateNotification->order_id = $order->id;
                 $OrderDelegateNotification->delegate_id = $delegate->id;
@@ -238,10 +238,10 @@ class ProviderOrderController extends MasterController
                 $fcm_data['sender_logo'] = $request->user()->profile_image;
                 $fcm_data['order_id'] = $order->id;
                 $fcm_data['time'] = $order->updated_at->diffforhumans();
-//
-//                if (Device::where('user_id', $delegate->id)->exists()) {
-//                    NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($delegate->id, $title, $body, $fcm_data, (60 * 20));
-//                }
+
+                if (Device::where('user_id', $delegate->id)->exists()) {
+                    NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($delegate->id, $title, $body, $fcm_data, (60 * 20));
+                }
             }
                 // =========================== Notification ===========================
 
