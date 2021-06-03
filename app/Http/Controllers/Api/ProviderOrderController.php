@@ -239,8 +239,7 @@ class ProviderOrderController extends MasterController
                     $fcm_data['msg_sender'] = $request->user()->username;
                     $fcm_data['sender_logo'] = $request->user()->profile_image;
                     $fcm_data['order_id'] = $order->id;
-                    $fcm_data['time'] = $order->updated_at->diffforhumans();
-
+                    $fcm_data['time'] = Carbon::now()->diffForHumans();
                     if (Device::where('user_id', $delegate->id)->exists()) {
                         NotificationController::SEND_SINGLE_STATIC_NOTIFICATION($delegate->id, $title, $body, $fcm_data, (60 * 20));
                     }
